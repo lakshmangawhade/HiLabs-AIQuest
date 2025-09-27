@@ -1,0 +1,6 @@
+pypdf
+pytesseract
+Pillow
+transformers
+torch
+numpy

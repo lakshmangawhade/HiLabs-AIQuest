@@ -1,0 +1,422 @@
+{
+    "summary": {
+        "total_clauses_analyzed": 50,
+        "standard_clauses_count": 9,
+        "non_standard_clauses_count": 41,
+        "contracts_with_non_standard_count": 10,
+        "list_of_contracts_with_non_standard": [
+            "WA_3_Redacted.pdf",
+            "WA_4_Redacted.pdf",
+            "TN_Contract1_Redacted.pdf",
+            "WA_2_Redacted.pdf",
+            "TN_Contract3_Redacted.pdf",
+            "WA_5_Redacted.pdf",
+            "TN_Contract4_Redacted.pdf",
+            "WA_1_Redacted.pdf",
+            "TN_Contract5_Redacted.pdf",
+            "TN_Contract2_Redacted.pdf"
+        ]
+    },
+    "details": [
+        {
+            "state": "TN",
+            "contract": "TN_Contract1_Redacted.pdf",
+            "attribute": "Medicaid Timely Filing",
+            "classification": "Standard",
+            "extracted_clause_preview": ". Unless otherwise instructed, or required by Regulatory\nRequirements, Provider shall submit Claims to using appropriate and current Coded Service\nIdentifier(s), within one hundred twenty (120) days f...",
+            "standard_clause_preview": "Unless otherwise instructed, or required by Regulatory Requirements, Provider shall submit Claims to using appropriate and current Coded Service Identifier(s), within one hundred twenty (120) days fro..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract1_Redacted.pdf",
+            "attribute": "Medicare Timely Filing",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "\u00a9 2022 August -  Tennessee, Inc. v.2\n02/13/2023\n44 #\n\n\"Urgently  Needed  Care\"  means  MA  Covered  Services  provided  when  a  MA  Member  is  either:  (1)...",
+            "standard_clause_preview": "Unless otherwise instructed in the provider manual(s) or Policies applicable to Medicare Advantage Program, or unless required by Regulatory Requirements, Provider shall submit Claims to using appropr..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract1_Redacted.pdf",
+            "attribute": "No Steerage/SOC",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": ". Provider shall be eligible to participate only in those Networks designated on...",
+            "standard_clause_preview": "Provider shall be eligible to participate only in those Networks designated on the Provider Networks Attachment of this Agreement. Provider shall not be recognized as a Participating Provider in such ..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract1_Redacted.pdf",
+            "attribute": "Medicaid Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For purposes of determining the \u2588\u2588\u2588\u2588\u2588 Rate, the total reimbursement amount that Provider and \u2588\u2588\u2588\u2588\u2588 have agreed upon for the applicable provider type(s) for Covered Services provided under this Agreeme..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract1_Redacted.pdf",
+            "attribute": "Medicare Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For Covered Services furnished by or on behalf of Provider for a Member enrolled in a Medicare Advantage Network, Provider agrees to accept an amount that is the lesser of Eligible Charges or the Medi..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract2_Redacted.pdf",
+            "attribute": "Medicaid Timely Filing",
+            "classification": "Standard",
+            "extracted_clause_preview": ". Unless otherwise instructed, or required by Regulatory\nRequirements, Provider shall submit Claims to  using appropriate and current Coded Service\nIdentifier(s), within one hundred twenty (120) days ...",
+            "standard_clause_preview": "Unless otherwise instructed, or required by Regulatory Requirements, Provider shall submit Claims to using appropriate and current Coded Service Identifier(s), within one hundred twenty (120) days fro..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract2_Redacted.pdf",
+            "attribute": "Medicare Timely Filing",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "Unless otherwise instructed in the provider manual(s) or Policies applicable to Medicare Advantage Program, or unless required by Regulatory Requirements, Provider shall submit Claims to using appropr..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract2_Redacted.pdf",
+            "attribute": "No Steerage/SOC",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": ". Provider shall be eligible to participate only in those Networks designated on...",
+            "standard_clause_preview": "Provider shall be eligible to participate only in those Networks designated on the Provider Networks Attachment of this Agreement. Provider shall not be recognized as a Participating Provider in such ..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract2_Redacted.pdf",
+            "attribute": "Medicaid Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For purposes of determining the \u2588\u2588\u2588\u2588\u2588 Rate, the total reimbursement amount that Provider and \u2588\u2588\u2588\u2588\u2588 have agreed upon for the applicable provider type(s) for Covered Services provided under this Agreeme..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract2_Redacted.pdf",
+            "attribute": "Medicare Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For Covered Services furnished by or on behalf of Provider for a Member enrolled in a Medicare Advantage Network, Provider agrees to accept an amount that is the lesser of Eligible Charges or the Medi..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract3_Redacted.pdf",
+            "attribute": "Medicaid Timely Filing",
+            "classification": "Standard",
+            "extracted_clause_preview": ".  Unless otherwise instructed, or required by Regulatory\nRequirements, Provider shall submit Claims to  using appropriate and current Coded Service\nIdentifier(s), within one hundred twenty (120) days...",
+            "standard_clause_preview": "Unless otherwise instructed, or required by Regulatory Requirements, Provider shall submit Claims to using appropriate and current Coded Service Identifier(s), within one hundred twenty (120) days fro..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract3_Redacted.pdf",
+            "attribute": "Medicare Timely Filing",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "\u00a9 2022 August -  Tennessee, Inc. v.2\n02/26/2024\n46\n#\n\n\"Urgently  Needed  Care\"  means  MA  Covered  Services  provided  when  a  MA  Member  is  either:  (1)...",
+            "standard_clause_preview": "Unless otherwise instructed in the provider manual(s) or Policies applicable to Medicare Advantage Program, or unless required by Regulatory Requirements, Provider shall submit Claims to using appropr..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract3_Redacted.pdf",
+            "attribute": "No Steerage/SOC",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": ". Provider shall be eligible to participate only in those Networks designated on...",
+            "standard_clause_preview": "Provider shall be eligible to participate only in those Networks designated on the Provider Networks Attachment of this Agreement. Provider shall not be recognized as a Participating Provider in such ..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract3_Redacted.pdf",
+            "attribute": "Medicaid Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For purposes of determining the \u2588\u2588\u2588\u2588\u2588 Rate, the total reimbursement amount that Provider and \u2588\u2588\u2588\u2588\u2588 have agreed upon for the applicable provider type(s) for Covered Services provided under this Agreeme..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract3_Redacted.pdf",
+            "attribute": "Medicare Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For Covered Services furnished by or on behalf of Provider for a Member enrolled in a Medicare Advantage Network, Provider agrees to accept an amount that is the lesser of Eligible Charges or the Medi..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract4_Redacted.pdf",
+            "attribute": "Medicaid Timely Filing",
+            "classification": "Standard",
+            "extracted_clause_preview": ".  Unless otherwise instructed, or required by Regulatory\nRequirements, Provider shall submit Claims to  using appropriate and current Coded Service\nIdentifier(s), within one hundred twenty (120) days...",
+            "standard_clause_preview": "Unless otherwise instructed, or required by Regulatory Requirements, Provider shall submit Claims to using appropriate and current Coded Service Identifier(s), within one hundred twenty (120) days fro..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract4_Redacted.pdf",
+            "attribute": "Medicare Timely Filing",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "\u00a9 2022 August -  Tennessee, Inc. v.2\n07/20/2023\n32 #\n\n\"Urgently  Needed  Care\"  means  MA  Covered  Services  provided  when  a  MA  Member  is  either:  (1)...",
+            "standard_clause_preview": "Unless otherwise instructed in the provider manual(s) or Policies applicable to Medicare Advantage Program, or unless required by Regulatory Requirements, Provider shall submit Claims to using appropr..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract4_Redacted.pdf",
+            "attribute": "No Steerage/SOC",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": ". Provider shall be eligible to participate only in those Networks designated on...",
+            "standard_clause_preview": "Provider shall be eligible to participate only in those Networks designated on the Provider Networks Attachment of this Agreement. Provider shall not be recognized as a Participating Provider in such ..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract4_Redacted.pdf",
+            "attribute": "Medicaid Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For purposes of determining the \u2588\u2588\u2588\u2588\u2588 Rate, the total reimbursement amount that Provider and \u2588\u2588\u2588\u2588\u2588 have agreed upon for the applicable provider type(s) for Covered Services provided under this Agreeme..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract4_Redacted.pdf",
+            "attribute": "Medicare Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For Covered Services furnished by or on behalf of Provider for a Member enrolled in a Medicare Advantage Network, Provider agrees to accept an amount that is the lesser of Eligible Charges or the Medi..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract5_Redacted.pdf",
+            "attribute": "Medicaid Timely Filing",
+            "classification": "Standard",
+            "extracted_clause_preview": ".  Unless otherwise instructed, or required by Regulatory\nRequirements, Provider shall submit Claims to  using appropriate and current Coded Service\nIdentifier(s), within one hundred twenty (120) days...",
+            "standard_clause_preview": "Unless otherwise instructed, or required by Regulatory Requirements, Provider shall submit Claims to using appropriate and current Coded Service Identifier(s), within one hundred twenty (120) days fro..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract5_Redacted.pdf",
+            "attribute": "Medicare Timely Filing",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "\u00a9 2019 Dec -   Tennessee, Inc. v.1\n02/22/2022\n56 #\n\n\"Urgently  Needed  Care\"  means  MA  Covered  Services  provided  when  a  MA  Member  is  either:  (1)...",
+            "standard_clause_preview": "Unless otherwise instructed in the provider manual(s) or Policies applicable to Medicare Advantage Program, or unless required by Regulatory Requirements, Provider shall submit Claims to using appropr..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract5_Redacted.pdf",
+            "attribute": "No Steerage/SOC",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": ". Provider shall be eligible to participate only in those Networks designated on...",
+            "standard_clause_preview": "Provider shall be eligible to participate only in those Networks designated on the Provider Networks Attachment of this Agreement. Provider shall not be recognized as a Participating Provider in such ..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract5_Redacted.pdf",
+            "attribute": "Medicaid Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For purposes of determining the \u2588\u2588\u2588\u2588\u2588 Rate, the total reimbursement amount that Provider and \u2588\u2588\u2588\u2588\u2588 have agreed upon for the applicable provider type(s) for Covered Services provided under this Agreeme..."
+        },
+        {
+            "state": "TN",
+            "contract": "TN_Contract5_Redacted.pdf",
+            "attribute": "Medicare Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For Covered Services furnished by or on behalf of Provider for a Member enrolled in a Medicare Advantage Network, Provider agrees to accept an amount that is the lesser of Eligible Charges or the Medi..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_1_Redacted.pdf",
+            "attribute": "Medicaid Timely Filing",
+            "classification": "Standard",
+            "extracted_clause_preview": ". Unless otherwise instructed, or required by Regulatory\nRequirements,  Provider  shall  submit  Claims  to  Plan,  using  appropriate  and  current  Coded  Service\nIdentifier(s), within three hundred...",
+            "standard_clause_preview": "Unless otherwise instructed, or required by Regulatory Requirements, Provider shall submit Claims to using appropriate and current Coded Service Identifier(s), within one hundred twenty (120) days fro..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_1_Redacted.pdf",
+            "attribute": "Medicare Timely Filing",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "\u00a9 2024 July \u2013   Washington, Inc. 30\n02/28/2025...",
+            "standard_clause_preview": "Unless otherwise instructed in the provider manual(s) or Policies applicable to Medicare Advantage Program, or unless required by Regulatory Requirements, Provider shall submit Claims to using appropr..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_1_Redacted.pdf",
+            "attribute": "No Steerage/SOC",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": ". Provider shall be eligible to participate only in those Networks designated on...",
+            "standard_clause_preview": "Provider shall be eligible to participate only in those Networks designated on the Provider Networks Attachment of this Agreement. Provider shall not be recognized as a Participating Provider in such ..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_1_Redacted.pdf",
+            "attribute": "Medicaid Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For purposes of determining the \u2588\u2588\u2588\u2588\u2588 Rate, the total reimbursement amount that Provider and \u2588\u2588\u2588\u2588\u2588 have agreed upon for the applicable provider type(s) for Covered Services provided under this Agreeme..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_1_Redacted.pdf",
+            "attribute": "Medicare Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For Covered Services furnished by or on behalf of Provider for a Member enrolled in a Medicare Advantage Network, Provider agrees to accept an amount that is the lesser of Eligible Charges or the Medi..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_2_Redacted.pdf",
+            "attribute": "Medicaid Timely Filing",
+            "classification": "Standard",
+            "extracted_clause_preview": ". Unless otherwise instructed, or required by Regulatory\nRequirements,  Provider  shall  submit  Claims  to  Plan,  using  appropriate  and  current  Coded  Service\nIdentifier(s), within three hundred...",
+            "standard_clause_preview": "Unless otherwise instructed, or required by Regulatory Requirements, Provider shall submit Claims to using appropriate and current Coded Service Identifier(s), within one hundred twenty (120) days fro..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_2_Redacted.pdf",
+            "attribute": "Medicare Timely Filing",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "\u00a9 2024 July \u2013   Washington, Inc. 30\n06/06/2025...",
+            "standard_clause_preview": "Unless otherwise instructed in the provider manual(s) or Policies applicable to Medicare Advantage Program, or unless required by Regulatory Requirements, Provider shall submit Claims to using appropr..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_2_Redacted.pdf",
+            "attribute": "No Steerage/SOC",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": ". Provider shall be eligible to participate only in those Networks designated on...",
+            "standard_clause_preview": "Provider shall be eligible to participate only in those Networks designated on the Provider Networks Attachment of this Agreement. Provider shall not be recognized as a Participating Provider in such ..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_2_Redacted.pdf",
+            "attribute": "Medicaid Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For purposes of determining the \u2588\u2588\u2588\u2588\u2588 Rate, the total reimbursement amount that Provider and \u2588\u2588\u2588\u2588\u2588 have agreed upon for the applicable provider type(s) for Covered Services provided under this Agreeme..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_2_Redacted.pdf",
+            "attribute": "Medicare Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For Covered Services furnished by or on behalf of Provider for a Member enrolled in a Medicare Advantage Network, Provider agrees to accept an amount that is the lesser of Eligible Charges or the Medi..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_3_Redacted.pdf",
+            "attribute": "Medicaid Timely Filing",
+            "classification": "Standard",
+            "extracted_clause_preview": ". Unless otherwise instructed, or required by Regulatory\nRequirements,  Provider  shall  submit  Claims  to  Plan,  using  appropriate  and  current  Coded  Service\nIdentifier(s), within three hundred...",
+            "standard_clause_preview": "Unless otherwise instructed, or required by Regulatory Requirements, Provider shall submit Claims to using appropriate and current Coded Service Identifier(s), within one hundred twenty (120) days fro..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_3_Redacted.pdf",
+            "attribute": "Medicare Timely Filing",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "\u00a9 2020 Nov \u2013  Services  Washington, Inc. 28 09/28/2021...",
+            "standard_clause_preview": "Unless otherwise instructed in the provider manual(s) or Policies applicable to Medicare Advantage Program, or unless required by Regulatory Requirements, Provider shall submit Claims to using appropr..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_3_Redacted.pdf",
+            "attribute": "No Steerage/SOC",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": ". Provider shall be eligible to participate only in those Networks designated on...",
+            "standard_clause_preview": "Provider shall be eligible to participate only in those Networks designated on the Provider Networks Attachment of this Agreement. Provider shall not be recognized as a Participating Provider in such ..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_3_Redacted.pdf",
+            "attribute": "Medicaid Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For purposes of determining the \u2588\u2588\u2588\u2588\u2588 Rate, the total reimbursement amount that Provider and \u2588\u2588\u2588\u2588\u2588 have agreed upon for the applicable provider type(s) for Covered Services provided under this Agreeme..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_3_Redacted.pdf",
+            "attribute": "Medicare Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For Covered Services furnished by or on behalf of Provider for a Member enrolled in a Medicare Advantage Network, Provider agrees to accept an amount that is the lesser of Eligible Charges or the Medi..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_4_Redacted.pdf",
+            "attribute": "Medicaid Timely Filing",
+            "classification": "Standard",
+            "extracted_clause_preview": ". Unless otherwise instructed, or required by Regulatory\nRequirements,  Provider  shall  submit  Claims  to  Plan,  using  appropriate  and  current  Coded  Service\nIdentifier(s), within three hundred...",
+            "standard_clause_preview": "Unless otherwise instructed, or required by Regulatory Requirements, Provider shall submit Claims to using appropriate and current Coded Service Identifier(s), within one hundred twenty (120) days fro..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_4_Redacted.pdf",
+            "attribute": "Medicare Timely Filing",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "\u00a9 2024 July \u2013 Washington    Washington,\nInc.\n30\n07/29/2025...",
+            "standard_clause_preview": "Unless otherwise instructed in the provider manual(s) or Policies applicable to Medicare Advantage Program, or unless required by Regulatory Requirements, Provider shall submit Claims to using appropr..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_4_Redacted.pdf",
+            "attribute": "No Steerage/SOC",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": ". Provider shall be eligible to participate only in those Networks designated on...",
+            "standard_clause_preview": "Provider shall be eligible to participate only in those Networks designated on the Provider Networks Attachment of this Agreement. Provider shall not be recognized as a Participating Provider in such ..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_4_Redacted.pdf",
+            "attribute": "Medicaid Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For purposes of determining the \u2588\u2588\u2588\u2588\u2588 Rate, the total reimbursement amount that Provider and \u2588\u2588\u2588\u2588\u2588 have agreed upon for the applicable provider type(s) for Covered Services provided under this Agreeme..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_4_Redacted.pdf",
+            "attribute": "Medicare Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For Covered Services furnished by or on behalf of Provider for a Member enrolled in a Medicare Advantage Network, Provider agrees to accept an amount that is the lesser of Eligible Charges or the Medi..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_5_Redacted.pdf",
+            "attribute": "Medicaid Timely Filing",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "Unless otherwise instructed, or required by Regulatory Requirements, Provider shall submit Claims to using appropriate and current Coded Service Identifier(s), within one hundred twenty (120) days fro..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_5_Redacted.pdf",
+            "attribute": "Medicare Timely Filing",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "Unless otherwise instructed in the provider manual(s) or Policies applicable to Medicare Advantage Program, or unless required by Regulatory Requirements, Provider shall submit Claims to using appropr..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_5_Redacted.pdf",
+            "attribute": "No Steerage/SOC",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "Provider shall be eligible to participate only in those Networks designated on the Provider Networks Attachment of this Agreement. Provider shall not be recognized as a Participating Provider in such ..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_5_Redacted.pdf",
+            "attribute": "Medicaid Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For purposes of determining the \u2588\u2588\u2588\u2588\u2588 Rate, the total reimbursement amount that Provider and \u2588\u2588\u2588\u2588\u2588 have agreed upon for the applicable provider type(s) for Covered Services provided under this Agreeme..."
+        },
+        {
+            "state": "WA",
+            "contract": "WA_5_Redacted.pdf",
+            "attribute": "Medicare Fee Schedule",
+            "classification": "Non-Standard",
+            "extracted_clause_preview": "...",
+            "standard_clause_preview": "For Covered Services furnished by or on behalf of Provider for a Member enrolled in a Medicare Advantage Network, Provider agrees to accept an amount that is the lesser of Eligible Charges or the Medi..."
+        }
+    ]
+}
