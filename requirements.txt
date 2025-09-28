@@ -1,6 +1,11 @@
 pypdf
+PyMuPDF
 pytesseract
 Pillow
 transformers
 torch
 numpy
+pandas
+openpyxl
+sentence-transformers
+pytest
