@@ -1,0 +1,32 @@
+ATTRIBUTE: Medicare Fee Schedule
+COMPARISON: TN_Contract2_Redacted vs TN_Standard_Template_Redacted
+================================================================================
+
+CLASSIFICATION: ❌ NON-STANDARD
+SIMILARITY SCORE: 0.144
+EXPLANATION: Low text similarity: 0.14; Section structure matches
+
+CONTRACT LENGTH: 3638 chars
+TEMPLATE LENGTH: 3294 chars
+
+CONTRACT PREVIEW (first 500 chars):
+----------------------------------------
+Medicare Advantage Program. In consideration of the
+mutual promises and covenants herein contained, the sufficiency of which is acknowledged by the parties, the parties
+agree as follows:
+ARTICLE I 
+DEFINITIONS
+"Affiliate" means any person, firm, corporation (including, without limitation, service corporation and professional
+corporation), partnership (including, without limitation, general partnership, limited partnership and limited liability
+partnership), limited liability company, joint ventu...
+
+TEMPLATE PREVIEW (first 500 chars):
+----------------------------------------
+MEDICARE ADVANTAGE 
+ 
+For  Covered Services furnished by or on behalf of Provider for a Member enrolled in a Medicare Advantage Network, 
+Provider agrees to accept an amount that is the lesser of Eligible Charges or the  Medicare Advantage Rate, 
+minus applicable Cost Shares, and modified before payment as described below. Provider agrees that this amount, 
+plus applicable Cost Shares, is full compensation for Covered Services. 
+ 
+Fee Schedule: The  “  Medicare Advantage Rate" is the amount calc...

@@ -1,0 +1,5 @@
+ATTRIBUTE: Medicare Timely Filing
+COMPARISON: TN_Contract2_Redacted vs TN_Standard_Template_Redacted
+================================================================================
+
+❌ CANNOT COMPARE - Missing text from one or both sources

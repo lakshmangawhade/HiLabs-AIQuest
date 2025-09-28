@@ -1,0 +1,27 @@
+ATTRIBUTE: No Steerage/SOC
+COMPARISON: TN_Contract2_Redacted vs TN_Standard_Template_Redacted
+================================================================================
+
+CLASSIFICATION: ✅ STANDARD
+SIMILARITY SCORE: 0.850
+EXPLANATION: High text similarity: 0.85; Section structure matches
+
+CONTRACT LENGTH: 2133 chars
+TEMPLATE LENGTH: 2148 chars
+
+CONTRACT PREVIEW (first 500 chars):
+----------------------------------------
+2.11 Networks and Provider Panels
+. Provider shall be eligible to participate only in those Networks designated on
+the Provider Networks Attachment of this Agreement.   Provider shall not be recognized as a Participating
+Provider in such Networks until the later of: 1) the Effective Date of this Agreement or; 2) as determined by
+ in  its  sole  discretion,  the  date  Provider  has  met   applicable  credentialing
+requirements  and  accreditation  requirements.   Provider  acknowledges  that   m...
+
+TEMPLATE PREVIEW (first 500 chars):
+----------------------------------------
+2.11 Networks and Provider Panels. Provider shall be eligible to participate only in those Networks designated on 
+the Provider Networks Attachment of this Agreement.   Provider shall not be recognized as a Participating 
+Provider in such Networks until the later of: 1) the Effective Date of this Agreement or; 2) as determined by 
+ in its sole discretion, the date Provider has met  applicable credentialing requirements 
+and accreditation requirements.  Provider acknowledges that  may develop, di...

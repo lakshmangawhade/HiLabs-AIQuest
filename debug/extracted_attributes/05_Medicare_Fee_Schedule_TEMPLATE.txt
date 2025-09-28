@@ -1,0 +1,53 @@
+ATTRIBUTE: Medicare Fee Schedule
+SOURCE: TN_Standard_Template_Redacted.pdf
+LENGTH: 3294 characters
+================================================================================
+
+MEDICARE ADVANTAGE 
+ 
+For  Covered Services furnished by or on behalf of Provider for a Member enrolled in a Medicare Advantage Network, 
+Provider agrees to accept an amount that is the lesser of Eligible Charges or the  Medicare Advantage Rate, 
+minus applicable Cost Shares, and modified before payment as described below. Provider agrees that this amount, 
+plus applicable Cost Shares, is full compensation for Covered Services. 
+ 
+Fee Schedule: The  “  Medicare Advantage Rate" is the amount calculated based on the rate or methodology 
+stated below for each service, adjusted as described in the notes, and multiplied by the stated percentage. 
+ 
+The  Medicare Advantage Rate shall be calculated based on the [Specific Medicare Fee Schedule] multiplied 
+by [Percent of  Medicare]. 
+
+ 
+ 
+ 
+Tennessee Enterprise Provider Agreement WCS 
+© 2024 May v.2 –  Tennessee, Inc. 61  
+[Contraxx ID #] 
+ 
+ 
+ 
+When determining the amount payable to Provider, any reimbursement terms in this Agreement that are based, in 
+whole or in part, on Medicare rates, pricing, fee schedules, or methodologies published or established by CMS, shall 
+refer to the per claim paymen t amounts that CMS and a Medicare beneficiary would directly pay to Provider for the 
+same items or services under original Medicare Part A or Part B. The amount payable to Provider shall not include any 
+bonus payment or settlement amount paid to Provider b y CMS outside of the Medicare per claim payment process, 
+unless otherwise set forth in the Medicare Advantage reimbursement terms of this Agreement. Unless  notifies 
+Provider otherwise, in the event CMS changes payment to Provider due to a CMS directive, Act of Congress, Executive 
+Order, other governmental pronouncement, or Regulatory Requirement, the amount payable to Provider hereunder will 
+automatically be changed as soon as reasonably practicable, as described herein, in the amount specified by CMS as 
+a result of such directive or change in law, or in the absence of such specification, in the same percentage amount as 
+payment is changed by CMS to Provider. 
+ 
+ shall not compensate Provider for the bad debts of its Medicare Advantage members. 
+ 
+ and Provider shall consider Medicare interim amounts, including but not limited to, indirect medical education, 
+disproportionate share, outliers, per diems, percent of charge, and all -inclusive rates, as final and  shall not 
+adjust Provider's compensation through a settlement, even if Medicare adjusts its compensation to Provider based on 
+a settlement. 
+ 
+ shall compensate Provider using the relevant payment system logic and data (for example: calculations, 
+payment groupings, or federal and provider -specific factors) that are available in  systems at the time 
+ processes the Provider's Claim.  shall not retroactively adjust Provider's compensation for previously 
+processed Claims to reconcile any difference with the payment system logic and data being used by Medicare on the 
+same processing date for the same date of servic e. In addition,  shall not retroactively adjust Provider's 
+compensation for previously processed claims to reflect Medicare's retroactive updates or changes to payment system 
+logic and data.  Provider shall not request adjustments solely based on these differences,

@@ -1,0 +1,34 @@
+=== No Steerage/SOC ===
+Context: {'agreement': 'PROVIDER AGREEMENT', 'article': 'ARTICLE II SERVICES/OBLIGATIONS', 'section': '2.11 Networks and Provider Panels', 'subsections': [], 'keywords': ['networks', 'provider panels', 'steerage', 'standard of care']}
+==================================================
+2.11 Networks and Provider Panels. Provider shall be eligible to participate only in those Networks designated on 
+the Provider Networks Attachment of this Agreement.   Provider shall not be recognized as a Participating 
+Provider in such Networks until the later of: 1) the Effective Date of this Agreement or; 2) as determined by 
+ in its sole discretion, the date Provider has met  applicable credentialing requirements 
+and accreditation requirements.  Provider acknowledges that  may develop, discontinue, or modify 
+new or existing Networks, products and/or programs. In addition to those Networks designated on the Provider 
+Networks Attachment,  may also identify Provider as a Participating Provider in additional Networks, 
+products and/or programs designated in writing from time to time by   The terms and conditions of 
+
+ 
+ 
+Tennessee Enterprise Provider Agreement   
+© 2024 June v.2 –  Tennessee, Inc. 
+MM/DD/YYYY 
+5  
+[Contraxx ID #] 
+ 
+Provider's participation as a Participating Provider in such additional Networks, products and/or programs 
+shall be on the terms and conditions as set forth in this Agreement unless otherwise agreed to in writing by 
+Provider and  
+  
+ In addition to and separate from Networks that support some or all of  products and/or programs 
+(e.g., HMOand PPO), Provider further acknowledges that certain Health Services, including by way of example 
+only, laboratory or behavioral health services, may be provided exclusively by designated Participating 
+Providers (a "Health Services Designated Network"), as determined by  Provider agrees to refer 
+Members to such designated Participating Providers in a Health Services Designated Network for the provision 
+of certain Health Services, even if Provider performs such services. Notwithstanding any other provision in 
+this Agreement, if Provider provides a Health Service to a Member for which Provider is not a designated 
+Participating Provider in a Health Services Designated Network, then Provider agrees that he/she/it shall not 
+be reimbursed for such services by  or the Member, unless Provider was authorized to provide such 
+Health Service by

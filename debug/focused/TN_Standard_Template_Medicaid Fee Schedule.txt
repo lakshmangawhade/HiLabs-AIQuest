@@ -1,0 +1,32 @@
+=== Medicaid Fee Schedule ===
+Context: {'agreement': 'COMPENSATION SCHEDULE ("ACS")', 'article': 'ARTICLE IV SPECIFIC REIMBURSEMENT TERMS', 'section': 'MEDICAID', 'subsections': [], 'keywords': ['medicaid', 'fee schedule', 'reimbursement', 'compensation']}
+==================================================
+MEDICAID 
+ 
+Fee Schedule: 
+For purposes of determining the  Rate, the total reimbursement amount that Provider and  have 
+agreed upon for the applicable provider type(s) for Covered Services provided under this Agreement shall be   [(XX%)] 
+of the [  Professional Provider Market Master Fee Schedule] in effect on the date of service.  
+ 
+The parties acknowledge and agree that the [  Professional Provider Market Master Fee Schedule] is subject 
+to modification by  at any time during the term of this Agreement and will be applied on a prospective basis. 
+ 
+ 
+In accordance with  Program Contractor Risk Agreement (CRA) section A.2.13.2.2,  shall not 
+reimburse providers based on automatic escalators or linkages to other methodologies that escalate such as current 
+Medicare rates or inflation indexes unless otherwise allowed by  
+ 
+Medicaid Affiliate Services. Provider acknowledges that  is affiliated with health plans that offer similar benefits 
+under similar programs as the programs covered hereunder ("Medicaid Affiliates").  The parties acknowledge that 
+Provider is not a Participating Provider in Medicaid Affiliate's Network for purpos es of rendering services to Medicaid 
+Members. However, in the event Provider treats a Medicaid Member of a Medicaid Affiliate, subject to Regulatory 
+Requirements, Provider shall accept as payment in full the rates esta blished by the Medicaid Affiliate's state program 
+governing care to Medicaid Members.   Such services must be Medicaid Covered Services under the Medicaid Affiliate's 
+state program, and shall require prior authorization, except for Emergency Services and services for which a Medicaid 
+Member is entitled to self -refer.  Upon request,  shall coordinate and provide information as necessary 
+between Provider and Medicaid Affiliate for services rendered to Medicaid Member. 
+ 
+Reimbursement Specific to Provider Type 
+ 
+The following will be reimbursed for facility services only: Acute Care Hospital, ASC, Behavioral Health Facility, Free 
+Standing Birthing Center, Rehabilitation Facility and SNF.  Professional services are excluded.

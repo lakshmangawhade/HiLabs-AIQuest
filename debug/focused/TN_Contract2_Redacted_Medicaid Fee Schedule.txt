@@ -1,0 +1,175 @@
+=== Medicaid Fee Schedule ===
+Context: {'agreement': 'COMPENSATION SCHEDULE ("ACS")', 'article': 'ARTICLE IV SPECIFIC REIMBURSEMENT TERMS', 'section': 'MEDICAID', 'subsections': [], 'keywords': ['medicaid', 'fee schedule', 'reimbursement', 'compensation']}
+==================================================
+MEDICAID
+For purposes of determining the [J Rate, the total reimbursement amount that Provider and
+have agreed upon for the applicable provider type(s) for Covered Services provided under this Agreement in effect on
+the date of service shall be as set forth below.
+Waivers
+Behavior Analyst Services Applicable Revenue Code 100% of the applicable Per 15 Minutes
+Assessment with applicable CPT/HCPCS | State of Tennessee 1915(c)
+Se
+Behavior Analyst Services: Applicable Revenue Code 100% of the applicable Per 15 Minutes
+Behavior Plan Development | with applicable CPT/HCPCS | State of Tennessee 1915(c)
+and Training of Staffonthe | Code IDD Waivers Rate
+Plan
+Behavior Analyst Services: Applicable Revenue Code 100% of the applicable Per 15 Minutes
+Presentation At Meetings with applicable CPT/HCPCS | State of Tennessee 1915(c)
+
+Code IDD Waivers Rate
+Behavior Analyst Services: Applicable Revenue Code 100% of the applicable Per 15 Minutes
+Other with applicable CPT/HCPCS | State of Tennessee 1915(c)
+
+Code IDD Waivers Rate
+Behavior Specialist Services | Applicable Revenue Code 100% of the applicable Per 15 Minutes
+
+with applicable CPT/HCPCS | State of Tennessee 1915(c)
+
+Code IDD Waivers Rate
+Behavior Respite Services Applicable Revenue Code 100% of the applicable Per Day
+SETA SENES [ienepriaie cormcrcs [Site o'temessee i919) |
+
+Code IDD Waivers Rate
+Environmental Accessibility 
+Modifications
+Applicable Revenue Code 
+with applicable CPT/HCPCS
+Code
+100% of the applicable 
+State of Tennessee 1915(c) 
+IDD Waivers Rate
+Per Unit
+Environmental Accessibility 
+Modifications– Transitional
+Applicable Revenue Code 
+with applicable CPT/HCPCS
+Code
+100% of the applicable 
+State of Tennessee 1915(c) 
+IDD Waivers Rate
+Per Unit
+Family Model Residential 
+Support (Rate 1, Rate 2, 
+Rate 3, Rate 4, Rate 5) 
+*This includes both In State 
+and Out of State
+Applicable Revenue Code 
+with applicable CPT/HCPCS
+Code
+100% of the applicable 
+State of Tennessee 1915(c) 
+IDD Waivers Rate
+Per Day
+Individual Transportation 
+Services
+Applicable Revenue Code 
+with applicable CPT/HCPCS
+Code
+100% of the applicable 
+State of Tennessee 1915(c) 
+IDD Waivers Rate
+Per Day
+Intensive Behavioral 
+Residential – Level 6
+Applicable Revenue Code 
+with applicable CPT/HCPCS
+Code
+100% of the applicable 
+State of Tennessee 1915(c) 
+IDD Waivers Rate
+Per Day
+Medical Residential 
+Services *This includes both
+In State and Out of State
+Applicable Revenue Code 
+with applicable CPT/HCPCS
+Code
+100% of the applicable 
+State of Tennessee 1915(c) 
+IDD Waivers Rate
+Per Day
+Nursing Services – LPN Applicable Revenue Code 
+with applicable CPT/HCPCS
+Code
+100% of the applicable 
+State of Tennessee 1915(c) 
+IDD Waivers Rate
+Per 15 Minutes
+Nursing Services – RN Applicable Revenue Code 
+with applicable CPT/HCPCS
+Code
+100% of the applicable 
+State of Tennessee 1915(c) 
+IDD Waivers Rate
+Per 15 Minutes
+Nutrition Initial Assessment 
+and Plan Development 
+(Rate 1, Rate 2, Rate 3)
+Applicable Revenue Code 
+with applicable CPT/HCPCS
+Code
+100% of the applicable 
+State of Tennessee 1915(c) 
+IDD Waivers Rate
+Per Service
+Nutrition Service (Rate 1, 
+Rate 2, Rate 3)
+Applicable Revenue Code 
+with applicable CPT/HCPCS
+Code
+100% of the applicable 
+State of Tennessee 1915(c) 
+IDD Waivers Rate
+Per Service
+Occupational Therapy Initial
+Assessment and Plan 
+Development (Rate 1, Rate 
+2, Rate 3)
+Applicable Revenue Code 
+with applicable CPT/HCPCS
+Code
+100% of the applicable 
+State of Tennessee 1915(c) 
+IDD Waivers Rate
+Per Day
+Occupational Therapy Initial
+Assessment and Plan 
+Development (Rate 1, Rate 
+2, Rate 3)– For Assistive 
+Technology/Specialized 
+Medical Equipment
+Applicable Revenue Code 
+with applicable CPT/HCPCS
+Code
+100% of the applicable 
+State of Tennessee 1915(c) 
+IDD Waivers Rate
+Per Day
+Occupational Therapy (Rate
+1, Rate 2, Rate 3)
+Applicable Revenue Code 
+with applicable CPT/HCPCS
+Code
+100% of the applicable 
+State of Tennessee 1915(c) 
+IDD Waivers Rate
+Per 15 Minutes
+Occupational Therapy (Rate
+1, Rate 2, Rate 3)– For 
+Assistive 
+Technology/Specialized 
+Medical Equipment
+Applicable Revenue Code 
+with applicable CPT/HCPCS
+Code
+100% of the applicable 
+State of Tennessee 1915(c) 
+IDD Waivers Rate
+Per 15 Minutes
+Orientation and Mobility 
+Training Initial Assessment 
+Applicable Revenue Code 
+with applicable CPT/HCPCS
+100% of the applicable 
+State of Tennessee 1915(c) 
+Per Day

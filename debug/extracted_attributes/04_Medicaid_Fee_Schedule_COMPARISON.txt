@@ -1,0 +1,34 @@
+ATTRIBUTE: Medicaid Fee Schedule
+COMPARISON: TN_Contract2_Redacted vs TN_Standard_Template_Redacted
+================================================================================
+
+CLASSIFICATION: ❌ NON-STANDARD
+SIMILARITY SCORE: 0.151
+EXPLANATION: Low text similarity: 0.15; Section count differs: 0 vs 1
+
+CONTRACT LENGTH: 4352 chars
+TEMPLATE LENGTH: 2112 chars
+
+CONTRACT PREVIEW (first 500 chars):
+----------------------------------------
+MEDICAID
+For purposes of determining the [J Rate, the total reimbursement amount that Provider and
+have agreed upon for the applicable provider type(s) for Covered Services provided under this Agreement in effect on
+the date of service shall be as set forth below.
+Waivers
+Behavior Analyst Services Applicable Revenue Code 100% of the applicable Per 15 Minutes
+Assessment with applicable CPT/HCPCS | State of Tennessee 1915(c)
+Se
+Behavior Analyst Services: Applicable Revenue Code 100% of the applica...
+
+TEMPLATE PREVIEW (first 500 chars):
+----------------------------------------
+MEDICAID 
+ 
+Fee Schedule: 
+For purposes of determining the  Rate, the total reimbursement amount that Provider and  have 
+agreed upon for the applicable provider type(s) for Covered Services provided under this Agreement shall be   [(XX%)] 
+of the [  Professional Provider Market Master Fee Schedule] in effect on the date of service.  
+ 
+The parties acknowledge and agree that the [  Professional Provider Market Master Fee Schedule] is subject 
+to modification by  at any time during the term of th...

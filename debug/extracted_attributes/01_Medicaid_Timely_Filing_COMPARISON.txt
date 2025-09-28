@@ -1,0 +1,30 @@
+ATTRIBUTE: Medicaid Timely Filing
+COMPARISON: TN_Contract2_Redacted vs TN_Standard_Template_Redacted
+================================================================================
+
+CLASSIFICATION: ✅ STANDARD
+SIMILARITY SCORE: 0.695
+EXPLANATION: Good similarity with placeholder replacement: 0.69; Section count differs: 5 vs 6
+
+CONTRACT LENGTH: 2051 chars
+TEMPLATE LENGTH: 3184 chars
+
+CONTRACT PREVIEW (first 500 chars):
+----------------------------------------
+3.1 Submission and Adjudication of Medicaid Claims
+. Unless otherwise instructed, or required by Regulatory
+Requirements, Provider shall submit Claims to  using appropriate and current Coded Service
+Identifier(s), within one hundred twenty (120) days from the date the Health Services are rendered or
+ may refuse payment. If  is the secondary payor, the one hundred twenty (120) day
+period will not begin until Provider receives notification of primary payor's responsibility.
+Tennessee Enterprise Pr...
+
+TEMPLATE PREVIEW (first 500 chars):
+----------------------------------------
+3.1 Submission and Adjudication of Medicaid Claims . Unless otherwise instructed, or required by Regulatory 
+Requirements, Provider shall submit Claims to  using appropriate and current Coded Service 
+Identifier(s), within one hundred twenty (120) days from the date the Health Services are rendered or  
+may refuse payment. If  is the secondary payor, the one hundred twenty (120) day period will not 
+begin until Provider receives notification of primary payor's responsibility. 
+ 
+3.1.1 In situati...
