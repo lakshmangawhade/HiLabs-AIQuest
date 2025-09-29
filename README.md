@@ -8,6 +8,7 @@ This repository contains a complete contract analysis system with both backend (
 - Python 3.8 or higher
 - Node.js 14 or higher
 - Git
+- Tesseract OCR (for PDF text extraction)
 
 ### One-Command Setup & Run
 
@@ -56,7 +57,7 @@ npm start  # Runs on port 3000
 
 1. **Backend (Python Flask API)**
    - Contract analysis engine
-   - PDF processing
+   - PDF processing with OCR fallback
    - Attribute extraction
    - Comparison algorithms
    - Pre-processed sample contracts and results
@@ -66,6 +67,7 @@ npm start  # Runs on port 3000
    - Results visualization
    - File upload interface
    - Comparison views
+   - Professional compliance reporting
 
 3. **Sample Data**
    - TN and WA contract samples
@@ -104,15 +106,74 @@ Once running:
 4. **View Results**: Interactive dashboard with detailed analysis results
 5. **Export Reports**: Download analysis results in various formats
 
-### Testing the System
+---
 
-1. The system comes with pre-loaded sample contracts in `Backend/HiLabsAIQuest_ContractsAI/`
-2. Results are already generated in `Backend/results/` for quick demo
-3. Upload new contracts through the dashboard at http://localhost:3000
+## Technical Backend Documentation
+
+A modular pipeline to analyze healthcare provider contracts against standard templates using multiple matching strategies. Paths are strictly anchored to the `Backend/` directory to ensure portability across machines.
+
+### Backend Prerequisites
+- Python 3.9+
+- Tesseract OCR installed (required for OCR fallback)
+- Python packages: pandas, pypdf, pymupdf (fitz), pytesseract, pillow
+
+Install Python dependencies:
+```bash
+pip install pandas pypdf pymupdf pytesseract pillow
+```
+
+### Directory Layout (anchored to Backend)
+- `Backend/HiLabsAIQuest_ContractsAI/`
+  - `Contracts/TN/` and `Contracts/WA/` contain contract PDFs
+  - `Standard Templates/` contains `TN_Standard_Template_Redacted.pdf` and `WA_Standard_Redacted.pdf`
+- `Backend/results/`  → exported analysis results (JSON + HTML preview)
+- `Backend/debug/`    → intermediate logs, cached text, and optionally extracted attribute text files
+- `Backend/config.py` → all paths are derived from the file location
+
+### Tesseract OCR Auto-Detection
+The backend locates Tesseract in this order:
+1. Environment variable `TESSERACT_CMD` (exact path to `tesseract`)
+2. `PATH` lookup via `shutil.which('tesseract')`
+3. Optional hints in `config.TESSERACT_PATHS`
+
+Quick options on Windows:
+```powershell
+# Set for current session:
+$env:TESSERACT_CMD = "C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
+```
+
+### Backend CLI Commands
+
+From project root:
+```bash
+# Process all WA contracts
+python Backend\main.py --batch-wa --debug
+
+# Process all TN contracts and save extracted attribute text files
+python Backend\main.py --batch-tn --debug --save-files
+
+# Process both states
+python Backend\main.py --batch-all
+
+# Process a single contract
+python Backend\main.py --contract WA_1_Redacted.pdf --state WA --debug
+```
+
+### Backend Outputs
+- Results: `Backend/results/<STATE>/<CONTRACT_NAME>/`
+  - `main_results.json`, `detailed_results.json`, `summary.json`, `frontend_data.json`
+  - `preview.html` for a quick in-browser summary
+- Debug/caches:
+  - `Backend/debug/focused/` → cached full text for each PDF
+  - `Backend/debug/extracted_attributes/<STATE>/<CONTRACT_NAME>/` with per-attribute `.txt` files
+
+### Backend Modules
+- `Backend/extract_clauses.py` → text extraction + attribute extraction
+- `Backend/compare_clauses.py` → hierarchical classification (exact/regex/fuzzy/semantic)
+- `Backend/results_exporter.py` → exporting results and attribute text files
+- `Backend/main.py` → CLI entry point
 
 ### Troubleshooting
-
-If you encounter any issues:
 
 1. **Port already in use**: 
    - Backend: Change port in `Backend/main.py` (default: 5000)
@@ -124,7 +185,11 @@ If you encounter any issues:
    cd ../hilabs-dash && npm install
    ```
 
-3. **CORS issues**: Already configured in the backend
+3. **Tesseract not found**: Set `TESSERACT_CMD` environment variable or add Tesseract to PATH
+
+4. **Template not found**: Ensure templates exist under `Backend/HiLabsAIQuest_ContractsAI/Standard Templates/`
+
+5. **CORS issues**: Already configured in the backend
 
 ### Support
 

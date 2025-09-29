@@ -1,8 +1,9 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { PieChart, Pie, BarChart, Bar, LineChart, Line, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
-import { FileText, TrendingUp, TrendingDown, Award, AlertCircle, CheckCircle, XCircle, Filter } from 'lucide-react';
+import { FileText, TrendingUp, TrendingDown, Award, AlertCircle, CheckCircle, XCircle, Filter, Upload } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
+import contractDataService from '../services/contractDataService';
 import './Dashboard.css';
 
 const COLORS = {
@@ -30,22 +31,73 @@ function Dashboard({ tnData, waData }) {
   const isDark = theme === 'dark';
   const [selectedState, setSelectedState] = useState('all');
   const [selectedMetric, setSelectedMetric] = useState('compliance');
+  const [uploadedContracts, setUploadedContracts] = useState([]);
+  const [combinedStats, setCombinedStats] = useState(null);
 
-  // Calculate overall statistics
+  // Load uploaded contracts on component mount and when data changes
+  useEffect(() => {
+    const uploaded = contractDataService.getUploadedContracts();
+    setUploadedContracts(uploaded);
+    
+    const stats = contractDataService.calculateCombinedStats(tnData, waData);
+    setCombinedStats(stats);
+  }, [tnData, waData]);
+
+  // Calculate overall statistics including uploaded contracts
   const stats = useMemo(() => {
-    const allContracts = [...(tnData || []), ...(waData || [])];
+    const allContracts = contractDataService.combineAllContracts(tnData, waData);
+    
+    if (allContracts.length === 0) {
+      return {
+        totalContracts: 0,
+        avgCompliance: 0,
+        fullyCompliant: 0,
+        partiallyCompliant: 0,
+        nonCompliant: 0,
+        withNonStandard: 0,
+        tnAvgCompliance: 0,
+        waAvgCompliance: 0,
+        uploadedAvgCompliance: 0
+      };
+    }
     
     const totalContracts = allContracts.length;
-    const avgCompliance = allContracts.reduce((sum, c) => sum + c.summary.overview.compliance_rate, 0) / totalContracts;
+    const avgCompliance = allContracts.reduce((sum, c) => {
+      const compliance = c.summary?.overview?.compliance_rate || c.summary?.compliance_rate || 0;
+      return sum + compliance;
+    }, 0) / totalContracts;
     
-    const fullyCompliant = allContracts.filter(c => c.summary.overview.compliance_rate === 100).length;
-    const partiallyCompliant = allContracts.filter(c => c.summary.overview.compliance_rate > 0 && c.summary.overview.compliance_rate < 100).length;
-    const nonCompliant = allContracts.filter(c => c.summary.overview.compliance_rate === 0).length;
-    const withNonStandard = allContracts.filter(c => c.summary.overview.non_standard_count > 0).length;
+    const fullyCompliant = allContracts.filter(c => {
+      const compliance = c.summary?.overview?.compliance_rate || c.summary?.compliance_rate || 0;
+      return compliance === 100;
+    }).length;
+    
+    const partiallyCompliant = allContracts.filter(c => {
+      const compliance = c.summary?.overview?.compliance_rate || c.summary?.compliance_rate || 0;
+      return compliance > 0 && compliance < 100;
+    }).length;
+    
+    const nonCompliant = allContracts.filter(c => {
+      const compliance = c.summary?.overview?.compliance_rate || c.summary?.compliance_rate || 0;
+      return compliance === 0;
+    }).length;
+    
+    const withNonStandard = allContracts.filter(c => {
+      const nonStandardCount = c.summary?.overview?.non_standard_count || c.summary?.non_standard_count || 0;
+      return nonStandardCount > 0;
+    }).length;
 
     // State-specific stats
-    const tnAvgCompliance = tnData ? tnData.reduce((sum, c) => sum + c.summary.overview.compliance_rate, 0) / tnData.length : 0;
-    const waAvgCompliance = waData ? waData.reduce((sum, c) => sum + c.summary.overview.compliance_rate, 0) / waData.length : 0;
+    const tnContracts = allContracts.filter(c => c.state === 'TN');
+    const waContracts = allContracts.filter(c => c.state === 'WA');
+    const uploadedContracts = allContracts.filter(c => c.state === 'UPLOADED');
+    
+    const tnAvgCompliance = tnContracts.length > 0 ? 
+      tnContracts.reduce((sum, c) => sum + (c.summary?.overview?.compliance_rate || c.summary?.compliance_rate || 0), 0) / tnContracts.length : 0;
+    const waAvgCompliance = waContracts.length > 0 ? 
+      waContracts.reduce((sum, c) => sum + (c.summary?.overview?.compliance_rate || c.summary?.compliance_rate || 0), 0) / waContracts.length : 0;
+    const uploadedAvgCompliance = uploadedContracts.length > 0 ? 
+      uploadedContracts.reduce((sum, c) => sum + (c.summary?.compliance_rate || 0), 0) / uploadedContracts.length : 0;
 
     return {
       totalContracts,
@@ -56,20 +108,24 @@ function Dashboard({ tnData, waData }) {
       withNonStandard,
       tnAvgCompliance,
       waAvgCompliance,
-      tnCount: tnData ? tnData.length : 0,
-      waCount: waData ? waData.length : 0
+      uploadedAvgCompliance,
+      tnCount: tnContracts.length,
+      waCount: waContracts.length,
+      uploadedCount: uploadedContracts.length
     };
   }, [tnData, waData]);
 
-  // Prepare data for pie chart - based on clauses
+  // Prepare data for pie chart - based on clauses (including uploaded contracts)
   const complianceDistribution = useMemo(() => {
-    const allContracts = [...(tnData || []), ...(waData || [])];
+    const allContracts = contractDataService.combineAllContracts(tnData, waData);
     let totalStandardClauses = 0;
     let totalNonStandardClauses = 0;
     
     allContracts.forEach(contract => {
-      totalStandardClauses += contract.summary.overview.standard_count || 0;
-      totalNonStandardClauses += contract.summary.overview.non_standard_count || 0;
+      const standardCount = contract.summary?.overview?.standard_count || contract.summary?.standard_count || 0;
+      const nonStandardCount = contract.summary?.overview?.non_standard_count || contract.summary?.non_standard_count || 0;
+      totalStandardClauses += standardCount;
+      totalNonStandardClauses += nonStandardCount;
     });
     
     return [
@@ -78,35 +134,72 @@ function Dashboard({ tnData, waData }) {
     ];
   }, [tnData, waData, isDark]);
 
-  // Prepare data for state comparison
+  // Prepare data for state comparison (including uploaded contracts)
   const stateComparison = useMemo(() => {
-    const tnClauses = (tnData || []).reduce((sum, c) => sum + (c.summary.overview.total_attributes || 0), 0);
-    const waClauses = (waData || []).reduce((sum, c) => sum + (c.summary.overview.total_attributes || 0), 0);
+    const allContracts = contractDataService.combineAllContracts(tnData, waData);
     
-    return [
+    const tnContracts = allContracts.filter(c => c.state === 'TN');
+    const waContracts = allContracts.filter(c => c.state === 'WA');
+    const uploadedContracts = allContracts.filter(c => c.state === 'UPLOADED');
+    
+    const tnClauses = tnContracts.reduce((sum, c) => sum + (c.summary?.overview?.total_attributes || c.summary?.total_attributes || 0), 0);
+    const waClauses = waContracts.reduce((sum, c) => sum + (c.summary?.overview?.total_attributes || c.summary?.total_attributes || 0), 0);
+    const uploadedClauses = uploadedContracts.reduce((sum, c) => sum + (c.summary?.total_attributes || 0), 0);
+    
+    const data = [
       { state: 'Tennessee', compliance: stats.tnAvgCompliance, contracts: stats.tnCount, clauses: tnClauses },
       { state: 'Washington', compliance: stats.waAvgCompliance, contracts: stats.waCount, clauses: waClauses }
     ];
+
+    // Add uploaded contracts if any exist
+    if (stats.uploadedCount > 0) {
+      data.push({ 
+        state: 'Uploaded', 
+        compliance: stats.uploadedAvgCompliance, 
+        contracts: stats.uploadedCount, 
+        clauses: uploadedClauses 
+      });
+    }
+
+    return data;
   }, [tnData, waData, stats]);
 
-  // Get filtered contracts based on selected state
+  // Get filtered contracts based on selected state (including uploaded contracts)
   const getFilteredContracts = () => {
-    if (selectedState === 'TN') return tnData || [];
-    if (selectedState === 'WA') return waData || [];
-    return [...(tnData || []), ...(waData || [])];
+    const allContracts = contractDataService.combineAllContracts(tnData, waData);
+    
+    if (selectedState === 'TN') return allContracts.filter(c => c.state === 'TN');
+    if (selectedState === 'WA') return allContracts.filter(c => c.state === 'WA');
+    if (selectedState === 'uploaded') return allContracts.filter(c => c.state === 'UPLOADED');
+    return allContracts;
   };
 
-  // Prepare contract performance data
+  // Prepare contract performance data (including uploaded contracts)
   const contractPerformance = useMemo(() => getFilteredContracts().map((contract, index) => {
-    const statePrefix = contract.state === 'TN' ? 'TN' : 'WA';
-    const contractNumber = contract.name.match(/\d+/)?.[0] || (index + 1);
+    let statePrefix, contractNumber, displayName;
+    
+    if (contract.state === 'UPLOADED') {
+      statePrefix = 'UP';
+      contractNumber = contract.name.substring(contract.name.length - 8); // Last 8 chars of job ID
+      displayName = `UP_${contractNumber}`;
+    } else {
+      statePrefix = contract.state === 'TN' ? 'TN' : 'WA';
+      contractNumber = contract.name.match(/\d+/)?.[0] || (index + 1);
+      displayName = `${statePrefix}${contractNumber}`;
+    }
+    
+    const compliance = contract.summary?.overview?.compliance_rate || contract.summary?.compliance_rate || 0;
+    const standardCount = contract.summary?.overview?.standard_count || contract.summary?.standard_count || 0;
+    const nonStandardCount = contract.summary?.overview?.non_standard_count || contract.summary?.non_standard_count || 0;
+    
     return {
       originalName: contract.name,
-      name: `${statePrefix}${contractNumber}`,
-      compliance: contract.summary.overview.compliance_rate,
+      name: displayName,
+      compliance: compliance,
       state: contract.state,
-      standardCount: contract.summary.overview.standard_count,
-      nonStandardCount: contract.summary.overview.non_standard_count
+      standardCount: standardCount,
+      nonStandardCount: nonStandardCount,
+      isUploaded: contract.isUploaded || false
     };
   }).sort((a, b) => {
     if (selectedMetric === 'compliance') {
@@ -178,7 +271,10 @@ function Dashboard({ tnData, waData }) {
             <div className="metric-content">
               <p className="metric-label">Total Contracts</p>
               <h3 className="metric-value">{stats.totalContracts}</h3>
-              <p className="metric-detail">{stats.tnCount} TN | {stats.waCount} WA</p>
+              <p className="metric-detail">
+                {stats.tnCount} TN | {stats.waCount} WA 
+                {stats.uploadedCount > 0 && ` | ${stats.uploadedCount} Uploaded`}
+              </p>
             </div>
           </div>
 
@@ -214,6 +310,7 @@ function Dashboard({ tnData, waData }) {
               <p className="metric-detail">At least 1 clause needs review</p>
             </div>
           </div>
+
         </div>
 
         {/* Charts Row 1 */}
@@ -307,9 +404,12 @@ function Dashboard({ tnData, waData }) {
                 value={selectedState}
                 onChange={(e) => setSelectedState(e.target.value)}
               >
-                <option value="all">All States</option>
+                <option value="all">All Contracts</option>
                 <option value="TN">Tennessee</option>
                 <option value="WA">Washington</option>
+                {stats.uploadedCount > 0 && (
+                  <option value="uploaded">Uploaded Contracts</option>
+                )}
               </select>
               <button 
                 className={`filter-btn ${selectedMetric === 'compliance' ? 'active' : ''}`}
