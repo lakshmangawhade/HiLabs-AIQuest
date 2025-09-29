@@ -2,9 +2,9 @@
 
 **GitHub Repository**: https://github.com/lakshmangawhade/HiLabs-AIQuest
 
-**Team Name:** HiLabs Team, **Team Members:** [Lakshman Gawhade](https://github.com/lakshmangawhade), [Sharwan Bagaria](https://github.com/sharwanbagaria03)
+**Team Name:** Radeon, **Team Members:** [Lakshman Gawhade](https://github.com/lakshmangawhade), [Sharwan Bagaria](https://github.com/sharwanbagaria03), [Harshit Pathak](https://github.com/harshitpathak10088)
 
-Video Submission: [Demo Video Link]
+Video Submission: [https://drive.google.com/drive/folders/1YtKtBoHyjyoA3XRLrcjchG8kSM7A3IPx?usp=drive_link]
 
 # Introduction
 
