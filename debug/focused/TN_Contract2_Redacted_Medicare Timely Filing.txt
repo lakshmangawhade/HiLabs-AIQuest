@@ -1,3 +1,0 @@
-=== Medicare Timely Filing ===
-Context: {'agreement': 'MEDICARE ADVANTAGE PARTICIPATION ATTACHMENT TO THE PROVIDER AGREEMENT', 'article': 'ARTICLE VI COMPENSATIN AND AUDIT', 'section': '6.1', 'subsections': ['6.1.1', '6.1.2', '6.1.3'], 'keywords': ['medicare advantage', 'timely filing', 'claims', 'submission']}
-==================================================

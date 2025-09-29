@@ -1,0 +1,265 @@
+.state-comparison {
+  min-height: calc(100vh - 64px);
+  background: #f8f9fa;
+  padding: 32px 0;
+}
+
+.comparison-header {
+  margin-bottom: 32px;
+}
+
+/* State Cards */
+.state-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.state-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+  position: relative;
+  overflow: hidden;
+}
+
+.state-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.state-card.tn::before {
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.state-card.wa::before {
+  background: linear-gradient(90deg, #764ba2, #9f7aea);
+}
+
+.state-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.state-card h2 {
+  margin: 0;
+  color: #2d3748;
+}
+
+.state-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  color: white;
+}
+
+.state-card.tn .state-icon {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.state-card.wa .state-icon {
+  background: linear-gradient(135deg, #764ba2, #9f7aea);
+}
+
+.state-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.state-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.state-metric .metric-label {
+  color: #718096;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.state-metric .metric-value {
+  color: #2d3748;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Comparison Grid */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+/* Ranking Table */
+.ranking-table {
+  overflow-x: auto;
+}
+
+.ranking-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ranking-table th {
+  text-align: left;
+  padding: 12px 16px;
+  background: #f7fafc;
+  color: #4a5568;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.ranking-table td {
+  padding: 16px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #4a5568;
+}
+
+.ranking-table tr:hover {
+  background: #f7fafc;
+}
+
+.rank {
+  font-weight: 600;
+}
+
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  color: #4a5568;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.rank-badge.top {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  color: #744210;
+}
+
+.performance-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.performance-badge.excellent {
+  background: #c6f6d5;
+  color: #22543d;
+}
+
+.performance-badge.good {
+  background: #bee3f8;
+  color: #2c5282;
+}
+
+.performance-badge.poor {
+  background: #fed7d7;
+  color: #742a2a;
+}
+
+/* Insights Grid */
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.insight-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  gap: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.insight-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.insight-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.insight-content {
+  flex: 1;
+}
+
+.insight-content h4 {
+  color: #718096;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.insight-value {
+  color: #2d3748;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.insight-detail {
+  color: #a0aec0;
+  font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .state-cards,
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .state-comparison {
+    padding: 20px 0;
+  }
+  
+  .state-metrics {
+    grid-template-columns: 1fr;
+  }
+  
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+}
