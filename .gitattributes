@@ -1,0 +1,4 @@
+*.json filter=lfs diff=lfs merge=lfs -text
+Backend/**/*.json filter=lfs diff=lfs merge=lfs -text
+hilabs-dash/public/Backend/**/*.json filter=lfs diff=lfs merge=lfs -text
+*.pdf filter=lfs diff=lfs merge=lfs -text
