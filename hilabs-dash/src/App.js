@@ -4,6 +4,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import Dashboard from './components/Dashboard';
 import ContractDetails from './components/ContractDetails';
 import StateComparison from './components/StateComparison';
+import ContractUpload from './components/ContractUpload';
 import Navigation from './components/Navigation';
 import './App.css';
 
@@ -83,6 +84,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard tnData={tnData} waData={waData} />} />
             <Route path="/contract/:state/:name" element={<ContractDetails tnData={tnData} waData={waData} />} />
             <Route path="/comparison" element={<StateComparison tnData={tnData} waData={waData} />} />
+            <Route path="/upload" element={<ContractUpload />} />
           </Routes>
         </div>
       </Router>

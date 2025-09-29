@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { BarChart3, FileText, GitCompare, Home, Sun, Moon } from 'lucide-react';
+import { BarChart3, FileText, GitCompare, Home, Sun, Moon, Upload } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import './Navigation.css';
 
@@ -11,6 +11,7 @@ function Navigation() {
   const navItems = [
     { path: '/dashboard', label: 'Dashboard', icon: Home },
     { path: '/comparison', label: 'State Comparison', icon: GitCompare },
+    { path: '/upload', label: 'Contract Upload', icon: Upload },
   ];
 
   return (
