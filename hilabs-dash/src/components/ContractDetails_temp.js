@@ -424,9 +424,9 @@ function ContractDetails({ tnData, waData }) {
                   <div className="card-header">
                     <h3 className="card-title">Compliance Distribution</h3>
                     <span className="card-badge">{summary.overview.compliance_rate.toFixed(1)}% Overall</span>
-                  </div>
-                  <div className="card-content">
-                    <ResponsiveContainer width="100%" height={280}>
+                  </div><div className=card-content>
+  {matchTypeData.length > 0 ? (
+    <ResponsiveContainer width="100%" height={280}>
                       <PieChart>
                         <Pie
                           data={complianceData}
@@ -467,9 +467,9 @@ function ContractDetails({ tnData, waData }) {
                   <div className="card-header">
                     <h3 className="card-title">Match Type Analysis</h3>
                     <span className="card-badge">{matchTypeData.length} Types</span>
-                  </div>
-                  <div className="card-content">
-                    <ResponsiveContainer width="100%" height={280}>
+                  </div><div className=card-content>
+  {matchTypeData.length > 0 ? (
+    <ResponsiveContainer width="100%" height={280}>
                       <BarChart data={matchTypeData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
                         <CartesianGrid strokeDasharray="3 3" stroke={isDark ? '#2d3561' : '#e2e8f0'} />
                         <XAxis 
@@ -813,3 +813,4 @@ function ContractDetails({ tnData, waData }) {
 }
 
 export default ContractDetails;
+
