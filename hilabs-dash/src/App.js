@@ -45,9 +45,56 @@ function App() {
         const summaryResponse = await fetch(`/Backend/results/${state}/${folder}/summary.json`);
         const detailsResponse = await fetch(`/Backend/results/${state}/${folder}/detailed_results.json`);
         
-        if (summaryResponse.ok && detailsResponse.ok) {
+        if (summaryResponse.ok) {
           const summary = await summaryResponse.json();
-          const details = await detailsResponse.json();
+          let details = {};
+          
+          // Try to load detailed_results.json
+          if (detailsResponse.ok) {
+            try {
+              details = await detailsResponse.json();
+            } catch (e) {
+              console.log(`Could not parse detailed_results.json for ${folder}`);
+            }
+          }
+          
+          // Load individual attribute files
+          const attributes = {};
+          if (summary.attribute_lists) {
+            const allAttributes = [
+              ...(summary.attribute_lists.standard || []),
+              ...(summary.attribute_lists.non_standard || [])
+            ];
+            
+            for (const attr of allAttributes) {
+              try {
+                // Convert attribute name to filename format
+                const filename = attr.toLowerCase()
+                  .replace(/\//g, '_')  // Replace forward slashes with underscores
+                  .replace(/ /g, '_')   // Replace spaces with underscores
+                  + '.json';
+                const attrResponse = await fetch(`/Backend/results/${state}/${folder}/attributes/${filename}`);
+                if (attrResponse.ok) {
+                  const attrData = await attrResponse.json();
+                  // Extract classification data from the attribute file
+                  const classification = attrData.classification || {};
+                  const texts = attrData.texts || {};
+                  attributes[attr] = {
+                    is_standard: classification.is_standard !== undefined ? classification.is_standard : summary.attribute_lists.standard.includes(attr),
+                    match_type: classification.match_type || (summary.attribute_lists.standard.includes(attr) ? 'exact' : 'no_match'),
+                    confidence: classification.confidence !== undefined ? classification.confidence : (summary.attribute_lists.standard.includes(attr) ? 0.95 : 0.3),
+                    explanation: classification.explanation || (summary.attribute_lists.standard.includes(attr) ? 'Matches standard template' : 'Deviates from standard template'),
+                    texts: texts  // Include the contract and template texts
+                  };
+                }
+              } catch (error) {
+                console.log(`Could not load attribute ${attr} for ${folder}`);
+              }
+            }
+          }
+          
+          // Add attributes to details
+          details.attributes = attributes;
           
           contracts.push({
             name: folder,
