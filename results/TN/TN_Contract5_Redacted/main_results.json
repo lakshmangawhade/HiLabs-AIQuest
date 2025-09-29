@@ -1,0 +1,46 @@
+{
+  "metadata": {
+    "contract_name": "TN_Contract5_Redacted.pdf",
+    "template_name": "TN_Standard_Template_Redacted.pdf",
+    "analysis_timestamp": "20250929_120223",
+    "total_attributes": 5,
+    "export_version": "1.0"
+  },
+  "results": {
+    "Medicaid Timely Filing": {
+      "is_standard": true,
+      "match_type": "semantic",
+      "confidence": 0.902,
+      "explanation": "Semantic match found (score: 0.90 >= threshold: 0.75); Very high similarity in some sections; Strong overall semantic alignment (0.95); Some key terminology present",
+      "attribute_name": "Medicaid Timely Filing"
+    },
+    "Medicare Timely Filing": {
+      "is_standard": true,
+      "match_type": "semantic",
+      "confidence": 0.917,
+      "explanation": "Semantic match found (score: 0.92 >= threshold: 0.75); Very high similarity in some sections; Strong overall semantic alignment (0.99); Some key terminology present",
+      "attribute_name": "Medicare Timely Filing"
+    },
+    "No Steerage/SOC": {
+      "is_standard": true,
+      "match_type": "exact",
+      "confidence": 0.95,
+      "explanation": "Exact match with placeholder replacement",
+      "attribute_name": "No Steerage/SOC"
+    },
+    "Medicaid Fee Schedule": {
+      "is_standard": false,
+      "match_type": "no_match",
+      "confidence": 0.0,
+      "explanation": "No matching method succeeded",
+      "attribute_name": "Medicaid Fee Schedule"
+    },
+    "Medicare Fee Schedule": {
+      "is_standard": false,
+      "match_type": "no_match",
+      "confidence": 0.0,
+      "explanation": "No matching method succeeded",
+      "attribute_name": "Medicare Fee Schedule"
+    }
+  }
+}
