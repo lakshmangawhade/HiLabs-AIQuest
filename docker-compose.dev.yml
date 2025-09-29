@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # Backend API Service (Development Mode)
+  backend-dev:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    container_name: hilabs-backend-dev
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount source code for hot-reload
+      - ./Backend:/app
+      # Persist data directories
+      - ./Backend/uploads:/app/uploads
+      - ./Backend/results:/app/results
+      - ./Backend/debug:/app/debug
+      - ./Backend/HiLabsAIQuest_ContractsAI:/app/HiLabsAIQuest_ContractsAI
+    environment:
+      - PYTHONUNBUFFERED=1
+      - TESSERACT_CMD=/usr/bin/tesseract
+      - DEBUG=true
+    command: ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    networks:
+      - hilabs-network-dev
+    restart: unless-stopped
+
+  # Frontend Service (Development Mode)
+  frontend-dev:
+    image: node:18-alpine
+    container_name: hilabs-frontend-dev
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./hilabs-dash:/app
+      - /app/node_modules
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+      - CHOKIDAR_USEPOLLING=true
+    command: sh -c "npm install && npm start"
+    depends_on:
+      - backend-dev
+    networks:
+      - hilabs-network-dev
+    restart: unless-stopped
+
+networks:
+  hilabs-network-dev:
+    driver: bridge

@@ -28,15 +28,28 @@ const ContractUpload = () => {
 
     const poll = async () => {
       try {
+        console.log(`Polling job status: ${API_URL}/api/contracts/status/${jobId}`);
         const response = await fetch(`${API_URL}/api/contracts/status/${jobId}`);
+        
+        if (!response.ok) {
+          throw new Error(`Status check failed: ${response.status}`);
+        }
+        
         const data = await response.json();
+        console.log('Job status:', data);
 
         setProgress(data.progress);
         setJobStatus(data.status);
 
         if (data.status === 'completed') {
           // Fetch results
+          console.log('Fetching results...');
           const resultsResponse = await fetch(`${API_URL}/api/contracts/results/${jobId}`);
+          
+          if (!resultsResponse.ok) {
+            throw new Error(`Failed to fetch results: ${resultsResponse.status}`);
+          }
+          
           const resultsData = await resultsResponse.json();
           setResults(resultsData);
           
@@ -61,7 +74,8 @@ const ContractUpload = () => {
           setProcessing(false);
         }
       } catch (err) {
-        setError('Failed to check job status');
+        console.error('Polling error:', err);
+        setError(`Failed to check job status: ${err.message}`);
         setProcessing(false);
       }
     };
@@ -86,17 +100,30 @@ const ContractUpload = () => {
     formData.append('redacted', redactedFile);
 
     try {
+      console.log('Uploading to:', `${API_URL}/api/contracts/compare`);
+      
       const response = await fetch(`${API_URL}/api/contracts/compare`, {
         method: 'POST',
         body: formData
       });
 
+      console.log('Response status:', response.status);
+
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || 'Upload failed');
+        const errorText = await response.text();
+        console.error('Error response:', errorText);
+        let errorMessage = 'Upload failed';
+        try {
+          const errorData = JSON.parse(errorText);
+          errorMessage = errorData.detail || errorMessage;
+        } catch (e) {
+          errorMessage = errorText || errorMessage;
+        }
+        throw new Error(errorMessage);
       }
 
       const data = await response.json();
+      console.log('Upload successful, job ID:', data.job_id);
       setJobId(data.job_id);
       
       // Start polling for results
@@ -129,34 +156,59 @@ const ContractUpload = () => {
     }
   };
 
+  // Test API connectivity
+  const testConnection = async () => {
+    try {
+      console.log('Testing API connection to:', `${API_URL}/api/test`);
+      const response = await fetch(`${API_URL}/api/test`);
+      const data = await response.json();
+      console.log('API test response:', data);
+      alert(`API Connected! Response: ${JSON.stringify(data)}`);
+    } catch (err) {
+      console.error('API connection test failed:', err);
+      alert(`API Connection Failed: ${err.message}`);
+    }
+  };
+
   return (
     <div className="contract-upload-container">
-      <div className="upload-header">
-        <h1>Contract Comparison</h1>
-        <p>Upload a standard template and redacted contract to compare attributes</p>
+      <h1 className="upload-title">Contract Upload & Comparison</h1>
+      
+      {/* Debug Section */}
+      <div style={{ marginBottom: '20px', padding: '10px', background: '#f0f0f0', borderRadius: '5px' }}>
+        <p>API URL: {API_URL}</p>
+        <button onClick={testConnection} style={{ padding: '5px 10px', marginTop: '5px' }}>
+          Test API Connection
+        </button>
       </div>
-
+      
       {/* Upload Section */}
       <div className="upload-section">
-        <div className="upload-panels">
+        <div className="upload-card">
           <FileUploadPanel
-            title="Standard Template"
-            subtitle="Upload the standard template contract"
+            title="Template Contract"
+            subtitle="Upload Standard Template PDF"
             file={templateFile}
             onFileChange={setTemplateFile}
             disabled={processing}
           />
+        </div>
+
+        <div className="upload-card">
           <FileUploadPanel
             title="Redacted Contract"
-            subtitle="Upload the redacted contract to compare"
+            subtitle="Upload Redacted Contract PDF"
             file={redactedFile}
             onFileChange={setRedactedFile}
             disabled={processing}
           />
         </div>
+      </div>
 
-        <div className="action-section">
-          <button
+      {/* Action Section */}
+      <div className="action-section">
+        <div className="action-container">
+          <button 
             className="compare-button"
             onClick={handleCompare}
             disabled={!templateFile || !redactedFile || processing}
