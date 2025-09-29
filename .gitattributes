@@ -2,3 +2,7 @@
 Backend/**/*.json filter=lfs diff=lfs merge=lfs -text
 hilabs-dash/public/Backend/**/*.json filter=lfs diff=lfs merge=lfs -text
 *.pdf filter=lfs diff=lfs merge=lfs -text
+results/**/* filter=lfs diff=lfs merge=lfs -text
+Backend/HiLabsAIQuest_ContractsAI/**/* filter=lfs diff=lfs merge=lfs -text
+Backend/**/* filter=lfs diff=lfs merge=lfs -text
+hilabs-dash/public/Backend/**/* filter=lfs diff=lfs merge=lfs -text

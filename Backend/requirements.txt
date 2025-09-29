@@ -1,12 +1,3 @@
-pypdf
-PyMuPDF
-pytesseract
-Pillow
-transformers
-torch
-numpy
-pandas
-openpyxl
-sentence-transformers
-pytest
-scikit-learn
+version https://git-lfs.github.com/spec/v1
+oid sha256:967ed8dcf6f112378cd488e7dc732db6924e243f830ddcd7d20cd7e1f0cc1e0d
+size 128
