@@ -2,6 +2,11 @@
   min-height: calc(100vh - 64px);
   background: #f8f9fa;
   padding: 32px 0;
+  transition: background 0.3s ease;
+}
+
+.dark-theme .contract-details {
+  background: #000000;
 }
 
 /* Not Found */
@@ -371,6 +376,89 @@
   color: #2d3748;
   font-size: 24px;
   font-weight: 700;
+}
+
+/* Non-Compliance Section */
+.non-compliance-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.non-compliance-item {
+  padding: 16px;
+  background: #fef2f2;
+  border-left: 4px solid #fc8181;
+  border-radius: 8px;
+}
+
+.dark-theme .non-compliance-item {
+  background: #2d1b1b;
+  border-left-color: #f87171;
+}
+
+.non-compliance-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.non-compliance-header strong {
+  flex: 1;
+  color: #742a2a;
+}
+
+.dark-theme .non-compliance-header strong {
+  color: #fca5a5;
+}
+
+.non-compliance-reason,
+.non-compliance-match {
+  font-size: 14px;
+  color: #4a5568;
+  margin-bottom: 8px;
+}
+
+.dark-theme .non-compliance-reason,
+.dark-theme .non-compliance-match {
+  color: #d0d0d0;
+}
+
+.non-compliance-reason strong,
+.non-compliance-match strong {
+  color: #2d3748;
+  margin-right: 8px;
+}
+
+.dark-theme .non-compliance-reason strong,
+.dark-theme .non-compliance-match strong {
+  color: #f0f0f0;
+}
+
+/* Dark theme for chart cards */
+.dark-theme .chart-card {
+  background: #16213e;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .chart-card h3 {
+  color: #f0f0f0;
+}
+
+/* Dark theme for analysis cards */
+.dark-theme .analysis-card {
+  background: #16213e;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .analysis-header h3 {
+  color: #f0f0f0;
+}
+
+.dark-theme .analysis-content {
+  color: #d0d0d0;
 }
 
 /* Responsive */

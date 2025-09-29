@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { ThemeProvider } from './contexts/ThemeContext';
 import Dashboard from './components/Dashboard';
 import ContractDetails from './components/ContractDetails';
 import StateComparison from './components/StateComparison';
@@ -73,17 +74,19 @@ function App() {
   }
 
   return (
-    <Router>
-      <div className="App">
-        <Navigation />
-        <Routes>
-          <Route path="/" element={<Navigate to="/dashboard" />} />
-          <Route path="/dashboard" element={<Dashboard tnData={tnData} waData={waData} />} />
-          <Route path="/contract/:state/:name" element={<ContractDetails tnData={tnData} waData={waData} />} />
-          <Route path="/comparison" element={<StateComparison tnData={tnData} waData={waData} />} />
-        </Routes>
-      </div>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <div className="App">
+          <Navigation />
+          <Routes>
+            <Route path="/" element={<Navigate to="/dashboard" />} />
+            <Route path="/dashboard" element={<Dashboard tnData={tnData} waData={waData} />} />
+            <Route path="/contract/:state/:name" element={<ContractDetails tnData={tnData} waData={waData} />} />
+            <Route path="/comparison" element={<StateComparison tnData={tnData} waData={waData} />} />
+          </Routes>
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 

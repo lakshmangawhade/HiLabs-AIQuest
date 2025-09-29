@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { PieChart, Pie, BarChart, Bar, LineChart, Line, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
 import { FileText, TrendingUp, TrendingDown, Award, AlertCircle, CheckCircle, XCircle, Filter } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../contexts/ThemeContext';
 import './Dashboard.css';
 
 const COLORS = {
@@ -12,11 +13,21 @@ const COLORS = {
   danger: '#fc8181',
   info: '#63b3ed',
   purple: '#9f7aea',
-  pink: '#ed64a6'
+  pink: '#ed64a6',
+  // Bright colors for dark theme
+  primaryBright: '#818cf8',
+  secondaryBright: '#a78bfa',
+  successBright: '#6ee7b7',
+  warningBright: '#fbbf24',
+  dangerBright: '#f87171',
+  infoBright: '#93c5fd',
+  purpleBright: '#c084fc'
 };
 
 function Dashboard({ tnData, waData }) {
   const navigate = useNavigate();
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
   const [selectedState, setSelectedState] = useState('all');
   const [selectedMetric, setSelectedMetric] = useState('compliance');
 
@@ -30,6 +41,7 @@ function Dashboard({ tnData, waData }) {
     const fullyCompliant = allContracts.filter(c => c.summary.overview.compliance_rate === 100).length;
     const partiallyCompliant = allContracts.filter(c => c.summary.overview.compliance_rate > 0 && c.summary.overview.compliance_rate < 100).length;
     const nonCompliant = allContracts.filter(c => c.summary.overview.compliance_rate === 0).length;
+    const withNonStandard = allContracts.filter(c => c.summary.overview.non_standard_count > 0).length;
 
     // State-specific stats
     const tnAvgCompliance = tnData ? tnData.reduce((sum, c) => sum + c.summary.overview.compliance_rate, 0) / tnData.length : 0;
@@ -41,6 +53,7 @@ function Dashboard({ tnData, waData }) {
       fullyCompliant,
       partiallyCompliant,
       nonCompliant,
+      withNonStandard,
       tnAvgCompliance,
       waAvgCompliance,
       tnCount: tnData ? tnData.length : 0,
@@ -48,18 +61,33 @@ function Dashboard({ tnData, waData }) {
     };
   }, [tnData, waData]);
 
-  // Prepare data for pie chart
-  const complianceDistribution = [
-    { name: 'Fully Compliant', value: stats.fullyCompliant, color: COLORS.success },
-    { name: 'Partially Compliant', value: stats.partiallyCompliant, color: COLORS.warning },
-    { name: 'Non-Compliant', value: stats.nonCompliant, color: COLORS.danger }
-  ];
+  // Prepare data for pie chart - based on clauses
+  const complianceDistribution = useMemo(() => {
+    const allContracts = [...(tnData || []), ...(waData || [])];
+    let totalStandardClauses = 0;
+    let totalNonStandardClauses = 0;
+    
+    allContracts.forEach(contract => {
+      totalStandardClauses += contract.summary.overview.standard_count || 0;
+      totalNonStandardClauses += contract.summary.overview.non_standard_count || 0;
+    });
+    
+    return [
+      { name: `Compliant (${totalStandardClauses})`, value: totalStandardClauses, color: isDark ? COLORS.successBright : COLORS.success },
+      { name: `Non-Compliant (${totalNonStandardClauses})`, value: totalNonStandardClauses, color: isDark ? COLORS.dangerBright : COLORS.danger }
+    ];
+  }, [tnData, waData, isDark]);
 
   // Prepare data for state comparison
-  const stateComparison = [
-    { state: 'Tennessee', compliance: stats.tnAvgCompliance, contracts: stats.tnCount },
-    { state: 'Washington', compliance: stats.waAvgCompliance, contracts: stats.waCount }
-  ];
+  const stateComparison = useMemo(() => {
+    const tnClauses = (tnData || []).reduce((sum, c) => sum + (c.summary.overview.total_attributes || 0), 0);
+    const waClauses = (waData || []).reduce((sum, c) => sum + (c.summary.overview.total_attributes || 0), 0);
+    
+    return [
+      { state: 'Tennessee', compliance: stats.tnAvgCompliance, contracts: stats.tnCount, clauses: tnClauses },
+      { state: 'Washington', compliance: stats.waAvgCompliance, contracts: stats.waCount, clauses: waClauses }
+    ];
+  }, [tnData, waData, stats]);
 
   // Get filtered contracts based on selected state
   const getFilteredContracts = () => {
@@ -69,13 +97,23 @@ function Dashboard({ tnData, waData }) {
   };
 
   // Prepare contract performance data
-  const contractPerformance = getFilteredContracts().map(contract => ({
-    name: contract.name.replace('_Redacted', '').replace('_', ' '),
-    compliance: contract.summary.overview.compliance_rate,
-    standard: contract.summary.overview.standard_count,
-    nonStandard: contract.summary.overview.non_standard_count,
-    state: contract.state
-  }));
+  const contractPerformance = useMemo(() => getFilteredContracts().map((contract, index) => {
+    const statePrefix = contract.state === 'TN' ? 'TN' : 'WA';
+    const contractNumber = contract.name.match(/\d+/)?.[0] || (index + 1);
+    return {
+      originalName: contract.name,
+      name: `${statePrefix}${contractNumber}`,
+      compliance: contract.summary.overview.compliance_rate,
+      state: contract.state,
+      standardCount: contract.summary.overview.standard_count,
+      nonStandardCount: contract.summary.overview.non_standard_count
+    };
+  }).sort((a, b) => {
+    if (selectedMetric === 'compliance') {
+      return b.compliance - a.compliance;
+    }
+    return a.name.localeCompare(b.name);
+  }), [selectedState, tnData, waData, selectedMetric]);
 
   // Calculate match type distribution
   const matchTypeData = useMemo(() => {
@@ -92,28 +130,30 @@ function Dashboard({ tnData, waData }) {
       name: type.charAt(0).toUpperCase() + type.slice(1),
       value: count,
       color: {
-        exact: COLORS.success,
-        regex: COLORS.info,
-        fuzzy: COLORS.warning,
-        semantic: COLORS.purple,
-        no_match: COLORS.danger
-      }[type] || COLORS.primary
+        exact: isDark ? COLORS.successBright : COLORS.success,
+        regex: isDark ? COLORS.infoBright : COLORS.info,
+        fuzzy: isDark ? COLORS.warningBright : COLORS.warning,
+        semantic: isDark ? COLORS.purpleBright : COLORS.purple,
+        no_match: isDark ? COLORS.dangerBright : COLORS.danger
+      }[type] || (isDark ? COLORS.primaryBright : COLORS.primary)
     }));
-  }, [selectedState, tnData, waData]);
+  }, [selectedState, tnData, waData, isDark]);
 
   // Prepare radar chart data for attribute analysis
   const attributeAnalysis = useMemo(() => {
     const contracts = getFilteredContracts();
     const attributes = ['Medicare Fee Schedule', 'Medicaid Fee Schedule', 'Medicare Timely Filing', 'Medicaid Timely Filing', 'No Steerage/SOC'];
-    
     return attributes.map(attr => {
       const compliantCount = contracts.filter(c => 
         c.summary.attribute_lists?.standard?.includes(attr)
       ).length;
       
+      const compliancePercent = contracts.length > 0 ? (compliantCount / contracts.length) * 100 : 0;
+      
       return {
         attribute: attr.replace(' Schedule', '').replace('Timely Filing', 'Filing'),
-        compliance: (compliantCount / contracts.length) * 100
+        compliance: compliancePercent,
+        label: `${attr.replace(' Schedule', '').replace('Timely Filing', 'Filing')} (${compliantCount}/${contracts.length})`
       };
     });
   }, [selectedState, tnData, waData]);
@@ -126,17 +166,6 @@ function Dashboard({ tnData, waData }) {
           <div>
             <h1>Contract Analysis Dashboard</h1>
             <p className="subtitle">Comprehensive overview of healthcare contract compliance</p>
-          </div>
-          <div className="header-filters">
-            <select 
-              className="filter-select"
-              value={selectedState}
-              onChange={(e) => setSelectedState(e.target.value)}
-            >
-              <option value="all">All States</option>
-              <option value="TN">Tennessee</option>
-              <option value="WA">Washington</option>
-            </select>
           </div>
         </div>
 
@@ -176,13 +205,13 @@ function Dashboard({ tnData, waData }) {
           </div>
 
           <div className="metric-card">
-            <div className="metric-icon" style={{ background: 'linear-gradient(135deg, #fc8181, #f56565)' }}>
+            <div className="metric-icon" style={{ background: 'linear-gradient(135deg, #9f7aea, #805ad5)' }}>
               <AlertCircle size={24} />
             </div>
             <div className="metric-content">
               <p className="metric-label">Need Review</p>
-              <h3 className="metric-value">{stats.partiallyCompliant + stats.nonCompliant}</h3>
-              <p className="metric-detail">{stats.partiallyCompliant} partial | {stats.nonCompliant} non-compliant</p>
+              <h3 className="metric-value">{stats.withNonStandard}</h3>
+              <p className="metric-detail">At least 1 clause needs review</p>
             </div>
           </div>
         </div>
@@ -221,8 +250,8 @@ function Dashboard({ tnData, waData }) {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="compliance" fill={COLORS.primary} name="Avg Compliance %" radius={[8, 8, 0, 0]} />
-                <Bar dataKey="contracts" fill={COLORS.secondary} name="Contract Count" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="compliance" fill={isDark ? COLORS.primaryBright : COLORS.primary} name="Avg Compliance %" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="contracts" fill={isDark ? COLORS.secondaryBright : COLORS.secondary} name="Contract Count" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -255,14 +284,14 @@ function Dashboard({ tnData, waData }) {
           </div>
 
           <div className="chart-card">
-            <h3>Attribute Compliance Rate</h3>
+            <h3>Clause Compliance Rate</h3>
             <ResponsiveContainer width="100%" height={300}>
               <RadarChart data={attributeAnalysis}>
-                <PolarGrid />
-                <PolarAngleAxis dataKey="attribute" />
-                <PolarRadiusAxis angle={90} domain={[0, 100]} />
-                <Radar name="Compliance %" dataKey="compliance" stroke={COLORS.primary} fill={COLORS.primary} fillOpacity={0.6} />
-                <Tooltip />
+                <PolarGrid stroke={isDark ? '#444' : '#ccc'} />
+                <PolarAngleAxis dataKey="attribute" tick={{ fill: isDark ? '#d0d0d0' : '#666' }} />
+                <PolarRadiusAxis angle={90} domain={[0, 100]} tick={{ fill: isDark ? '#d0d0d0' : '#666' }} />
+                <Radar name="Compliance %" dataKey="compliance" stroke={isDark ? COLORS.primaryBright : COLORS.primary} fill={isDark ? COLORS.primaryBright : COLORS.primary} fillOpacity={0.6} />
+                <Tooltip contentStyle={{ backgroundColor: isDark ? '#16213e' : '#fff', border: isDark ? '1px solid #2d3561' : '1px solid #e0e0e0' }} />
               </RadarChart>
             </ResponsiveContainer>
           </div>
@@ -273,6 +302,15 @@ function Dashboard({ tnData, waData }) {
           <div className="table-header">
             <h3>Contract Performance Details</h3>
             <div className="table-filters">
+              <select 
+                className="filter-select"
+                value={selectedState}
+                onChange={(e) => setSelectedState(e.target.value)}
+              >
+                <option value="all">All States</option>
+                <option value="TN">Tennessee</option>
+                <option value="WA">Washington</option>
+              </select>
               <button 
                 className={`filter-btn ${selectedMetric === 'compliance' ? 'active' : ''}`}
                 onClick={() => setSelectedMetric('compliance')}
@@ -294,9 +332,9 @@ function Dashboard({ tnData, waData }) {
                 <tr>
                   <th>Contract</th>
                   <th>State</th>
-                  <th>Compliance Rate</th>
-                  <th>Standard</th>
-                  <th>Non-Standard</th>
+                  <th>Compliance</th>
+                  <th>Standard Clauses</th>
+                  <th>Non-Standard Clauses</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
@@ -331,10 +369,10 @@ function Dashboard({ tnData, waData }) {
                         </div>
                       </td>
                       <td>
-                        <span className="count-badge success">{contract.standard}</span>
+                        <span className="count-badge success">{contract.standardCount}</span>
                       </td>
                       <td>
-                        <span className="count-badge danger">{contract.nonStandard}</span>
+                        <span className="count-badge danger">{contract.nonStandardCount}</span>
                       </td>
                       <td>
                         {contract.compliance === 100 ? (
@@ -354,7 +392,7 @@ function Dashboard({ tnData, waData }) {
                       <td>
                         <button 
                           className="btn btn-primary btn-sm"
-                          onClick={() => navigate(`/contract/${contract.state}/${contract.name.replace(' ', '_')}`)}
+                          onClick={() => navigate(`/contract/${contract.state}/${contract.originalName.replace(' ', '_')}`)}
                         >
                           View Details
                         </button>
@@ -371,12 +409,23 @@ function Dashboard({ tnData, waData }) {
           <h3>Contract Compliance Overview</h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={contractPerformance}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" angle={-45} textAnchor="end" height={100} />
-              <YAxis />
-              <Tooltip />
+              <CartesianGrid strokeDasharray="3 3" stroke={isDark ? '#444' : '#e0e0e0'} />
+              <XAxis dataKey="name" angle={-45} textAnchor="end" height={100} tick={{ fill: isDark ? '#d0d0d0' : '#666' }} />
+              <YAxis tick={{ fill: isDark ? '#d0d0d0' : '#666' }} />
+              <Tooltip 
+                formatter={(value, name) => {
+                  if (name === 'Compliance %') {
+                    const contract = contractPerformance.find(c => c.compliance === value);
+                    if (contract) {
+                      return [`${value.toFixed(1)}% (${contract.standardCount}/${contract.standardCount + contract.nonStandardCount})`, name];
+                    }
+                  }
+                  return [value, name];
+                }}
+                contentStyle={{ backgroundColor: isDark ? '#16213e' : '#fff', border: isDark ? '1px solid #2d3561' : '1px solid #e0e0e0' }} 
+              />
               <Legend />
-              <Bar dataKey="compliance" fill={COLORS.primary} name="Compliance %" radius={[8, 8, 0, 0]} />
+              <Bar dataKey="compliance" fill={isDark ? COLORS.primaryBright : COLORS.primary} name="Compliance %" radius={[8, 8, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

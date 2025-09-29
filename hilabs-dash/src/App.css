@@ -11,13 +11,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+body.dark-theme {
+  background: #000000;
 }
 
 .App {
   min-height: 100vh;
   background: #f8f9fa;
+  transition: background 0.3s ease;
+}
+
+.dark-theme .App {
+  background: #000000;
+  color: #f0f0f0;
 }
 
 /* Loading Screen */
@@ -61,12 +75,21 @@ body {
   padding: 24px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
   margin-bottom: 24px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
 }
 
 .card:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme .card {
+  background: #16213e;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .card:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
 }
 
 /* Headers */
@@ -77,6 +100,10 @@ h1 {
   margin-bottom: 8px;
 }
 
+.dark-theme h1 {
+  color: #f0f0f0;
+}
+
 h2 {
   color: #4a5568;
   font-size: 1.8rem;
@@ -84,11 +111,19 @@ h2 {
   margin-bottom: 16px;
 }
 
+.dark-theme h2 {
+  color: #e0e0e0;
+}
+
 h3 {
   color: #4a5568;
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 12px;
+}
+
+.dark-theme h3 {
+  color: #d0d0d0;
 }
 
 /* Buttons */

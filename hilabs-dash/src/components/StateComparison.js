@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { BarChart, Bar, LineChart, Line, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell, Area, AreaChart } from 'recharts';
 import { TrendingUp, TrendingDown, Activity, BarChart3, PieChart as PieChartIcon } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 import './StateComparison.css';
 
 const COLORS = {
@@ -9,10 +10,20 @@ const COLORS = {
   success: '#48bb78',
   warning: '#f6ad55',
   danger: '#fc8181',
-  info: '#63b3ed'
+  info: '#63b3ed',
+  // Bright colors for dark theme
+  tnBright: '#818cf8',
+  waBright: '#a78bfa',
+  successBright: '#6ee7b7',
+  warningBright: '#fbbf24',
+  dangerBright: '#f87171',
+  infoBright: '#93c5fd'
 };
 
 function StateComparison({ tnData, waData }) {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+  
   // Calculate comprehensive state metrics
   const stateMetrics = useMemo(() => {
     const calculateStateMetrics = (data, stateName) => {
@@ -130,17 +141,27 @@ function StateComparison({ tnData, waData }) {
 
   // Individual contract performance
   const contractPerformance = useMemo(() => {
-    const tnContracts = (tnData || []).map(c => ({
-      name: c.name.replace('_Redacted', ''),
-      compliance: c.summary.overview.compliance_rate,
-      state: 'TN'
-    }));
+    const tnContracts = (tnData || []).map((c, index) => {
+      const contractNumber = c.name.match(/\d+/)?.[0] || (index + 1);
+      return {
+        name: `TN${contractNumber}`,
+        compliance: c.summary.overview.compliance_rate,
+        state: 'TN',
+        standardCount: c.summary.overview.standard_count,
+        nonStandardCount: c.summary.overview.non_standard_count
+      };
+    });
     
-    const waContracts = (waData || []).map(c => ({
-      name: c.name.replace('_Redacted', ''),
-      compliance: c.summary.overview.compliance_rate,
-      state: 'WA'
-    }));
+    const waContracts = (waData || []).map((c, index) => {
+      const contractNumber = c.name.match(/\d+/)?.[0] || (index + 1);
+      return {
+        name: `WA${contractNumber}`,
+        compliance: c.summary.overview.compliance_rate,
+        state: 'WA',
+        standardCount: c.summary.overview.standard_count,
+        nonStandardCount: c.summary.overview.non_standard_count
+      };
+    });
     
     return [...tnContracts, ...waContracts].sort((a, b) => b.compliance - a.compliance);
   }, [tnData, waData]);
@@ -218,8 +239,8 @@ function StateComparison({ tnData, waData }) {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="Tennessee" fill={COLORS.tn} radius={[8, 8, 0, 0]} />
-                <Bar dataKey="Washington" fill={COLORS.wa} radius={[8, 8, 0, 0]} />
+                <Bar dataKey="Tennessee" fill={isDark ? COLORS.tnBright : COLORS.tn} radius={[8, 8, 0, 0]} />
+                <Bar dataKey="Washington" fill={isDark ? COLORS.waBright : COLORS.wa} radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -233,8 +254,8 @@ function StateComparison({ tnData, waData }) {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="Tennessee" fill={COLORS.tn} />
-                <Bar dataKey="Washington" fill={COLORS.wa} />
+                <Bar dataKey="Tennessee" fill={isDark ? COLORS.tnBright : COLORS.tn} />
+                <Bar dataKey="Washington" fill={isDark ? COLORS.waBright : COLORS.wa} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -248,8 +269,8 @@ function StateComparison({ tnData, waData }) {
                 <PolarGrid />
                 <PolarAngleAxis dataKey="type" />
                 <PolarRadiusAxis />
-                <Radar name="Tennessee" dataKey="Tennessee" stroke={COLORS.tn} fill={COLORS.tn} fillOpacity={0.6} />
-                <Radar name="Washington" dataKey="Washington" stroke={COLORS.wa} fill={COLORS.wa} fillOpacity={0.6} />
+                <Radar name="Tennessee" dataKey="Tennessee" stroke={isDark ? COLORS.tnBright : COLORS.tn} fill={isDark ? COLORS.tnBright : COLORS.tn} fillOpacity={0.6} />
+                <Radar name="Washington" dataKey="Washington" stroke={isDark ? COLORS.waBright : COLORS.wa} fill={isDark ? COLORS.waBright : COLORS.wa} fillOpacity={0.6} />
                 <Legend />
                 <Tooltip />
               </RadarChart>
@@ -257,17 +278,17 @@ function StateComparison({ tnData, waData }) {
           </div>
 
           <div className="chart-card">
-            <h3>Attribute Compliance Rates</h3>
+            <h3>Clause Compliance Rates</h3>
             <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={attributeComparison} layout="horizontal">
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis type="number" domain={[0, 100]} />
-                <YAxis dataKey="attribute" type="category" width={100} />
-                <Tooltip />
+              <RadarChart data={attributeComparison}>
+                <PolarGrid stroke={isDark ? '#444' : '#ccc'} />
+                <PolarAngleAxis dataKey="attribute" tick={{ fill: isDark ? '#d0d0d0' : '#666' }} />
+                <PolarRadiusAxis angle={90} domain={[0, 100]} tick={{ fill: isDark ? '#d0d0d0' : '#666' }} />
+                <Radar name="Tennessee" dataKey="Tennessee" stroke={isDark ? COLORS.tnBright : COLORS.tn} fill={isDark ? COLORS.tnBright : COLORS.tn} fillOpacity={0.6} />
+                <Radar name="Washington" dataKey="Washington" stroke={isDark ? COLORS.waBright : COLORS.wa} fill={isDark ? COLORS.waBright : COLORS.wa} fillOpacity={0.6} />
                 <Legend />
-                <Bar dataKey="Tennessee" fill={COLORS.tn} />
-                <Bar dataKey="Washington" fill={COLORS.wa} />
-              </BarChart>
+                <Tooltip contentStyle={{ backgroundColor: isDark ? '#16213e' : '#fff', border: isDark ? '1px solid #2d3561' : '1px solid #e0e0e0' }} />
+              </RadarChart>
             </ResponsiveContainer>
           </div>
         </div>
@@ -283,6 +304,8 @@ function StateComparison({ tnData, waData }) {
                   <th>Contract</th>
                   <th>State</th>
                   <th>Compliance Rate</th>
+                  <th>Standard</th>
+                  <th>Non-Standard</th>
                   <th>Performance</th>
                 </tr>
               </thead>
@@ -314,6 +337,12 @@ function StateComparison({ tnData, waData }) {
                         </div>
                         <span className="compliance-text">{contract.compliance.toFixed(1)}%</span>
                       </div>
+                    </td>
+                    <td>
+                      <span className="count-badge success">{contract.standardCount || 0}</span>
+                    </td>
+                    <td>
+                      <span className="count-badge danger">{contract.nonStandardCount || 0}</span>
                     </td>
                     <td>
                       {contract.compliance >= 80 ? (

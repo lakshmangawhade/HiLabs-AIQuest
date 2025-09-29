@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { PieChart, Pie, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
-import { ArrowLeft, FileText, CheckCircle, XCircle, AlertCircle, Info, TrendingUp, Shield, Clock } from 'lucide-react';
+import { PieChart, Pie, BarChart, Bar, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
+import { ArrowLeft, FileText, CheckCircle, XCircle, AlertCircle, Info, TrendingUp, Shield, Clock, BarChart3 } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 import './ContractDetails.css';
 
 const COLORS = {
@@ -10,12 +11,21 @@ const COLORS = {
   danger: '#fc8181',
   info: '#63b3ed',
   primary: '#667eea',
-  secondary: '#764ba2'
+  secondary: '#764ba2',
+  // Bright colors for dark theme
+  successBright: '#6ee7b7',
+  warningBright: '#fbbf24',
+  dangerBright: '#f87171',
+  infoBright: '#93c5fd',
+  primaryBright: '#818cf8',
+  secondaryBright: '#a78bfa'
 };
 
 function ContractDetails({ tnData, waData }) {
   const { state, name } = useParams();
   const navigate = useNavigate();
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
   const [contract, setContract] = useState(null);
   const [activeTab, setActiveTab] = useState('overview');
 
@@ -48,8 +58,8 @@ function ContractDetails({ tnData, waData }) {
 
   // Prepare pie chart data for compliance
   const complianceData = [
-    { name: 'Standard', value: summary.overview.standard_count, color: COLORS.success },
-    { name: 'Non-Standard', value: summary.overview.non_standard_count, color: COLORS.danger }
+    { name: `Compliant (${summary.overview.standard_count})`, value: summary.overview.standard_count, color: isDark ? COLORS.successBright : COLORS.success },
+    { name: `Non-Compliant (${summary.overview.non_standard_count})`, value: summary.overview.non_standard_count, color: isDark ? COLORS.dangerBright : COLORS.danger }
   ];
 
   // Prepare match type data
@@ -100,7 +110,7 @@ function ContractDetails({ tnData, waData }) {
             Back to Dashboard
           </button>
           <div className="header-info">
-            <h1>{contract.name.replace('_Redacted', '').replace('_', ' ')}</h1>
+            <h1>{contract.state}{contract.name.match(/\d+/)?.[0] || ''}</h1>
             <div className="header-badges">
               <span className={`state-badge ${contract.state.toLowerCase()}`}>
                 {contract.state}
@@ -301,6 +311,42 @@ function ContractDetails({ tnData, waData }) {
 
         {activeTab === 'analysis' && (
           <div className="tab-content">
+            {/* Compliance by Clause Type */}
+            <div className="charts-grid">
+              <div className="chart-card">
+                <h3>Clause Compliance Status</h3>
+                <ResponsiveContainer width="100%" height={300}>
+                  <BarChart data={attributeDetails}>
+                    <CartesianGrid strokeDasharray="3 3" stroke={isDark ? '#444' : '#e0e0e0'} />
+                    <XAxis dataKey="name" angle={-45} textAnchor="end" height={120} tick={{ fill: isDark ? '#d0d0d0' : '#666', fontSize: 11 }} />
+                    <YAxis domain={[0, 1]} tick={{ fill: isDark ? '#d0d0d0' : '#666' }} />
+                    <Tooltip 
+                      formatter={(value) => `${(value * 100).toFixed(1)}%`}
+                      contentStyle={{ backgroundColor: isDark ? '#16213e' : '#fff', border: isDark ? '1px solid #2d3561' : '1px solid #e0e0e0' }} 
+                    />
+                    <Bar dataKey="confidence" radius={[8, 8, 0, 0]}>
+                      {attributeDetails.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.isStandard ? (isDark ? COLORS.successBright : COLORS.success) : (isDark ? COLORS.dangerBright : COLORS.danger)} />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+
+              <div className="chart-card">
+                <h3>Confidence Score Distribution</h3>
+                <ResponsiveContainer width="100%" height={300}>
+                  <RadarChart data={attributeDetails.slice(0, 5)}>
+                    <PolarGrid stroke={isDark ? '#444' : '#ccc'} />
+                    <PolarAngleAxis dataKey="name" tick={{ fill: isDark ? '#d0d0d0' : '#666', fontSize: 10 }} />
+                    <PolarRadiusAxis angle={90} domain={[0, 1]} tick={{ fill: isDark ? '#d0d0d0' : '#666' }} />
+                    <Radar name="Confidence" dataKey="confidence" stroke={isDark ? COLORS.primaryBright : COLORS.primary} fill={isDark ? COLORS.primaryBright : COLORS.primary} fillOpacity={0.6} />
+                    <Tooltip formatter={(value) => `${(value * 100).toFixed(1)}%`} contentStyle={{ backgroundColor: isDark ? '#16213e' : '#fff' }} />
+                  </RadarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+
             <div className="analysis-grid">
               <div className="analysis-card">
                 <div className="analysis-header">
@@ -310,8 +356,8 @@ function ContractDetails({ tnData, waData }) {
                 <div className="analysis-content">
                   <p>This contract shows a compliance rate of <strong>{summary.overview.compliance_rate.toFixed(1)}%</strong> with the standard template.</p>
                   <ul>
-                    <li>{summary.overview.standard_count} attributes match the standard template</li>
-                    <li>{summary.overview.non_standard_count} attributes deviate from the standard</li>
+                    <li>{summary.overview.standard_count} clauses match the standard template</li>
+                    <li>{summary.overview.non_standard_count} clauses deviate from the standard</li>
                     <li>Average confidence score: {(summary.confidence_stats.average * 100).toFixed(1)}%</li>
                   </ul>
                 </div>
@@ -379,6 +425,46 @@ function ContractDetails({ tnData, waData }) {
                 </div>
               </div>
             </div>
+
+            {/* Non-Compliance Reasons */}
+            {summary.overview.non_standard_count > 0 && (
+              <div className="analysis-card">
+                <div className="analysis-header">
+                  <AlertCircle size={24} className="analysis-icon" style={{ color: isDark ? COLORS.dangerBright : COLORS.danger }} />
+                  <h3>Non-Compliance Details</h3>
+                </div>
+                <div className="analysis-content">
+                  <h4>Non-Compliant Clauses:</h4>
+                  <div className="non-compliance-list">
+                    {attributeDetails.filter(attr => !attr.isStandard).map((attr, index) => (
+                      <div key={index} className="non-compliance-item">
+                        <div className="non-compliance-header">
+                          <XCircle size={18} className="icon-danger" />
+                          <strong>{attr.name}</strong>
+                          <span className="confidence-badge" style={{ 
+                            background: attr.confidence < 0.3 ? (isDark ? COLORS.dangerBright : COLORS.danger) : 
+                                       attr.confidence < 0.7 ? (isDark ? COLORS.warningBright : COLORS.warning) : 
+                                       (isDark ? COLORS.infoBright : COLORS.info),
+                            color: isDark ? '#000' : '#fff',
+                            padding: '2px 8px',
+                            borderRadius: '12px',
+                            fontSize: '12px'
+                          }}>
+                            {(attr.confidence * 100).toFixed(0)}% confidence
+                          </span>
+                        </div>
+                        <div className="non-compliance-reason">
+                          <strong>Reason:</strong> {attr.explanation || 'No matching clause found in the contract text'}
+                        </div>
+                        <div className="non-compliance-match">
+                          <strong>Match Type:</strong> {attr.matchType.replace('_', ' ').toUpperCase()}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>
