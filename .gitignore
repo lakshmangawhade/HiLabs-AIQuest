@@ -28,7 +28,6 @@ htmlcov/
 .idea/
 *.swp
 *.swo
-*~
 .DS_Store
 
 # React / Node
@@ -59,26 +58,16 @@ hilabs-dash/build
 .env.test.local
 .env.production.local
 
-# Debug
-debug/
+# Logs only (not debug folder)
 *.log
 logs/
-
-# Results and data (keep structure but ignore large files)
-results/
-Backend/results/
-hilabs-dash/public/Backend/
-
-# Contract PDFs (sensitive data)
-HiLabsAIQuest_ContractsAI/Contracts/
-HiLabsAIQuest_ContractsAI/Standard Templates/
-*.pdf
 
 # Temporary files
 *.tmp
 *.temp
 *.bak
 .cache/
+~$*
 
 # OS generated files
 Thumbs.db
@@ -120,3 +109,6 @@ $RECYCLE.BIN/
 *~
 .directory
 .Trash-*
+
+# Semantic cache (large embeddings)
+.semantic_cache/
