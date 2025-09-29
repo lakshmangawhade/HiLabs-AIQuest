@@ -1,0 +1,122 @@
+{
+  "contract_info": {
+    "contract_name": "WA_4_Redacted.pdf",
+    "template_name": "WA_Standard_Redacted.pdf",
+    "analysis_date": "20250929_132401",
+    "contract_id": "wa_4_redacted"
+  },
+  "summary": {
+    "overview": {
+      "total_attributes": 5,
+      "standard_count": 5,
+      "non_standard_count": 0,
+      "compliance_rate": 100.0
+    },
+    "match_type_distribution": {
+      "semantic": 5
+    },
+    "confidence_stats": {
+      "average": 0.901,
+      "minimum": 0.78,
+      "maximum": 1.0
+    },
+    "attribute_lists": {
+      "standard": [
+        "Medicaid Timely Filing",
+        "Medicare Timely Filing",
+        "No Steerage/SOC",
+        "Medicaid Fee Schedule",
+        "Medicare Fee Schedule"
+      ],
+      "non_standard": []
+    }
+  },
+  "attributes": [
+    {
+      "id": "medicaid_timely_filing",
+      "name": "Medicaid Timely Filing",
+      "status": "standard",
+      "match_type": "semantic",
+      "confidence": 0.914,
+      "explanation": "Semantic match found (score: 0.91 >= threshold: 0.75); Very high similarity in some sections; Strong overall semantic alignment (0.98); Some key terminology present",
+      "details": {
+        "match_type_label": "Semantic Match",
+        "confidence_level": "Very High",
+        "status_icon": "✅",
+        "status_color": "green"
+      }
+    },
+    {
+      "id": "medicare_timely_filing",
+      "name": "Medicare Timely Filing",
+      "status": "standard",
+      "match_type": "semantic",
+      "confidence": 0.896,
+      "explanation": "Semantic match found (score: 0.90 >= threshold: 0.75); Very high similarity in some sections; Strong overall semantic alignment (0.94); Some key terminology present",
+      "details": {
+        "match_type_label": "Semantic Match",
+        "confidence_level": "High",
+        "status_icon": "✅",
+        "status_color": "green"
+      }
+    },
+    {
+      "id": "no_steerage_soc",
+      "name": "No Steerage/SOC",
+      "status": "standard",
+      "match_type": "semantic",
+      "confidence": 0.913,
+      "explanation": "Semantic match found (score: 0.91 >= threshold: 0.70); Very high similarity in some sections; Strong overall semantic alignment (0.98); Some key terminology present",
+      "details": {
+        "match_type_label": "Semantic Match",
+        "confidence_level": "Very High",
+        "status_icon": "✅",
+        "status_color": "green"
+      }
+    },
+    {
+      "id": "medicaid_fee_schedule",
+      "name": "Medicaid Fee Schedule",
+      "status": "standard",
+      "match_type": "semantic",
+      "confidence": 0.78,
+      "explanation": "Semantic match found (score: 0.71 >= threshold: 0.65); Good similarity in some sections; Moderate overall semantic alignment (0.61); Key terminology strongly present; Standard fee schedule methodology confirmed",
+      "details": {
+        "match_type_label": "Semantic Match",
+        "confidence_level": "Medium",
+        "status_icon": "✅",
+        "status_color": "green"
+      }
+    },
+    {
+      "id": "medicare_fee_schedule",
+      "name": "Medicare Fee Schedule",
+      "status": "standard",
+      "match_type": "semantic",
+      "confidence": 1.0,
+      "explanation": "Semantic match found (score: 0.93 >= threshold: 0.65); Very high similarity in some sections; Strong overall semantic alignment (0.82); Key terminology strongly present; Standard fee schedule methodology confirmed",
+      "details": {
+        "match_type_label": "Semantic Match",
+        "confidence_level": "Very High",
+        "status_icon": "✅",
+        "status_color": "green"
+      }
+    }
+  ],
+  "charts_data": {
+    "compliance_pie": {
+      "standard": 5,
+      "non_standard": 0
+    },
+    "match_types": {
+      "semantic": 5
+    },
+    "confidence_distribution": {
+      "0.9-1.0": 3,
+      "0.8-0.9": 1,
+      "0.7-0.8": 1,
+      "0.5-0.7": 0,
+      "0.0-0.5": 0
+    }
+  }
+}

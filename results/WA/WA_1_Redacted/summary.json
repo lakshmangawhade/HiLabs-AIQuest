@@ -1,0 +1,28 @@
+{
+  "overview": {
+    "total_attributes": 5,
+    "standard_count": 2,
+    "non_standard_count": 3,
+    "compliance_rate": 40.0
+  },
+  "match_type_distribution": {
+    "semantic": 2,
+    "no_match": 3
+  },
+  "confidence_stats": {
+    "average": 0.366,
+    "minimum": 0.0,
+    "maximum": 0.917
+  },
+  "attribute_lists": {
+    "standard": [
+      "Medicaid Timely Filing",
+      "No Steerage/SOC"
+    ],
+    "non_standard": [
+      "Medicare Timely Filing",
+      "Medicaid Fee Schedule",
+      "Medicare Fee Schedule"
+    ]
+  }
+}

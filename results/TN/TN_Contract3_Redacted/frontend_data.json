@@ -2,7 +2,7 @@
   "contract_info": {
     "contract_name": "TN_Contract3_Redacted.pdf",
     "template_name": "TN_Standard_Template_Redacted.pdf",
-    "analysis_date": "20250929_092748",
+    "analysis_date": "20250929_131755",
     "contract_id": "tn_contract3_redacted"
   },
   "summary": {
@@ -13,13 +13,24 @@
       "compliance_rate": 100.0
     },
     "match_type_distribution": {
-      "semantic": 4,
-      "exact": 1
+      "semantic": 2,
+      "exact": 1,
+      "regex": 2
     },
     "confidence_stats": {
-      "average": 0.99,
-      "minimum": 0.95,
-      "maximum": 1.0
+      "average": 0.917,
+      "minimum": 0.875,
+      "maximum": 0.95
+    },
+    "attribute_lists": {
+      "standard": [
+        "Medicaid Timely Filing",
+        "Medicare Timely Filing",
+        "No Steerage/SOC",
+        "Medicaid Fee Schedule",
+        "Medicare Fee Schedule"
+      ],
+      "non_standard": []
     }
   },
   "attributes": [
@@ -28,8 +39,8 @@
       "name": "Medicaid Timely Filing",
       "status": "standard",
       "match_type": "semantic",
-      "confidence": 1.0,
-      "explanation": "Semantic match (key terms similarity: 1.00)",
+      "confidence": 0.918,
+      "explanation": "Semantic match found (score: 0.92 >= threshold: 0.75); Very high similarity in some sections; Strong overall semantic alignment (0.99); Some key terminology present",
       "details": {
         "match_type_label": "Semantic Match",
         "confidence_level": "Very High",
@@ -42,8 +53,8 @@
       "name": "Medicare Timely Filing",
       "status": "standard",
       "match_type": "semantic",
-      "confidence": 1.0,
-      "explanation": "Semantic match (key terms similarity: 1.00)",
+      "confidence": 0.92,
+      "explanation": "Semantic match found (score: 0.92 >= threshold: 0.75); Very high similarity in some sections; Strong overall semantic alignment (1.00); Some key terminology present",
       "details": {
         "match_type_label": "Semantic Match",
         "confidence_level": "Very High",
@@ -69,11 +80,11 @@
       "id": "medicaid_fee_schedule",
       "name": "Medicaid Fee Schedule",
       "status": "standard",
-      "match_type": "semantic",
-      "confidence": 1.0,
-      "explanation": "Semantic match (key terms similarity: 1.00)",
+      "match_type": "regex",
+      "confidence": 0.921,
+      "explanation": "Strong structural match (0.92); Attribute patterns match well (0.92); Adjusted threshold for Medicare fee schedule placeholder replacement",
       "details": {
-        "match_type_label": "Semantic Match",
+        "match_type_label": "Pattern Match",
         "confidence_level": "Very High",
         "status_icon": "✅",
         "status_color": "green"
@@ -83,12 +94,12 @@
       "id": "medicare_fee_schedule",
       "name": "Medicare Fee Schedule",
       "status": "standard",
-      "match_type": "semantic",
-      "confidence": 1.0,
-      "explanation": "Semantic match (key terms similarity: 1.00)",
+      "match_type": "regex",
+      "confidence": 0.875,
+      "explanation": "Strong structural match (0.90); Attribute patterns match well (0.85); Adjusted threshold for Medicare fee schedule placeholder replacement",
       "details": {
-        "match_type_label": "Semantic Match",
-        "confidence_level": "Very High",
+        "match_type_label": "Pattern Match",
+        "confidence_level": "High",
         "status_icon": "✅",
         "status_color": "green"
       }
@@ -100,8 +111,16 @@
       "non_standard": 0
     },
     "match_types": {
-      "semantic": 4,
-      "exact": 1
+      "semantic": 2,
+      "exact": 1,
+      "regex": 2
+    },
+    "confidence_distribution": {
+      "0.9-1.0": 4,
+      "0.8-0.9": 1,
+      "0.7-0.8": 0,
+      "0.5-0.7": 0,
+      "0.0-0.5": 0
     }
   }
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contract Analysis - TN_Contract1_Redacted.pdf</title>
+    <title>Contract Analysis Results - TN_Contract1_Redacted.pdf</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }
         .container { max-width: 1200px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
@@ -13,6 +13,7 @@
         .summary-card { background: #f8f9fa; padding: 20px; border-radius: 8px; text-align: center; }
         .summary-card h3 { margin: 0 0 10px 0; color: #333; }
         .summary-card .value { font-size: 2em; font-weight: bold; color: #007bff; }
+        .attributes { }
         .attribute { margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
         .attribute.standard { border-left: 4px solid #28a745; }
         .attribute.non_standard { border-left: 4px solid #dc3545; }
@@ -30,7 +31,7 @@
             <h1>Contract Analysis Results</h1>
             <p><strong>Contract:</strong> TN_Contract1_Redacted.pdf</p>
             <p><strong>Template:</strong> TN_Standard_Template_Redacted.pdf</p>
-            <p><strong>Analysis Date:</strong> 20250929_092628</p>
+            <p><strong>Analysis Date:</strong> 20250929_131649</p>
         </div>
         
         <div class="summary">
@@ -64,8 +65,8 @@
                 </div>
                 <div class="details">
                     <strong>Match Type:</strong> Semantic Match | 
-                    <strong>Confidence:</strong> 0.857 (High) | 
-                    <strong>Explanation:</strong> Semantic match (key terms similarity: 0.86)
+                    <strong>Confidence:</strong> 0.895 (High) | 
+                    <strong>Explanation:</strong> Semantic match found (score: 0.90 >= threshold: 0.75); Very high similarity in some sections; Strong overall semantic alignment (0.94); Some key terminology present
                 </div>
             </div>
 
@@ -78,14 +79,28 @@
                 </div>
                 <div class="details">
                     <strong>Match Type:</strong> Semantic Match | 
-                    <strong>Confidence:</strong> 0.857 (High) | 
-                    <strong>Explanation:</strong> Semantic match (key terms similarity: 0.86)
+                    <strong>Confidence:</strong> 0.917 (Very High) | 
+                    <strong>Explanation:</strong> Semantic match found (score: 0.92 >= threshold: 0.75); Very high similarity in some sections; Strong overall semantic alignment (0.99); Some key terminology present
+                </div>
+            </div>
+
+            <div class="attribute standard">
+                <div class="attribute-header">
+                    <div class="attribute-name">No Steerage/SOC</div>
+                    <div class="status standard">
+                        ✅ Standard
+                    </div>
+                </div>
+                <div class="details">
+                    <strong>Match Type:</strong> Exact Match | 
+                    <strong>Confidence:</strong> 0.95 (Very High) | 
+                    <strong>Explanation:</strong> Exact match with placeholder replacement
                 </div>
             </div>
 
             <div class="attribute non_standard">
                 <div class="attribute-header">
-                    <div class="attribute-name">No Steerage/SOC</div>
+                    <div class="attribute-name">Medicaid Fee Schedule</div>
                     <div class="status non_standard">
                         ❌ Non_Standard
                     </div>
@@ -99,29 +114,15 @@
 
             <div class="attribute standard">
                 <div class="attribute-header">
-                    <div class="attribute-name">Medicaid Fee Schedule</div>
-                    <div class="status standard">
-                        ✅ Standard
-                    </div>
-                </div>
-                <div class="details">
-                    <strong>Match Type:</strong> Semantic Match | 
-                    <strong>Confidence:</strong> 1.0 (Very High) | 
-                    <strong>Explanation:</strong> Semantic match (key terms similarity: 1.00)
-                </div>
-            </div>
-
-            <div class="attribute standard">
-                <div class="attribute-header">
                     <div class="attribute-name">Medicare Fee Schedule</div>
                     <div class="status standard">
                         ✅ Standard
                     </div>
                 </div>
                 <div class="details">
-                    <strong>Match Type:</strong> Semantic Match | 
-                    <strong>Confidence:</strong> 1.0 (Very High) | 
-                    <strong>Explanation:</strong> Semantic match (key terms similarity: 1.00)
+                    <strong>Match Type:</strong> Pattern Match | 
+                    <strong>Confidence:</strong> 0.825 (High) | 
+                    <strong>Explanation:</strong> Moderate structural match (0.80); Attribute patterns match well (0.85); Adjusted threshold for Medicare fee schedule placeholder replacement
                 </div>
             </div>
 
